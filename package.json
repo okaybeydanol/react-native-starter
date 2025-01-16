@@ -7,7 +7,13 @@
     "ios": "react-native run-ios",
     "lint": "eslint .",
     "start": "react-native start",
-    "test": "jest"
+    "test": "jest",
+    "purge:js": "rm -rf node_modules package-lock.json yarn.lock && npm cache clean --force && rm -rf $TMPDIR/metro-* $TMPDIR/haste-*",
+    "purge:android": "(cd android && ./gradlew --stop) && rm -rf ~/.gradle/caches/ ~/.gradle/daemon ~/.gradle/native ~/.gradle/wrapper android/app/build",
+    "purge:ios": "rm -rf ios/Pods/* ios/Podfile.lock ios/build ~/Library/Caches/CocoaPods ~/Library/Developer/Xcode/DerivedData && xcrun simctl erase all && pod cache clean --all",
+    "purge:gem": "rm -rf Gemfile.lock vendor/* ~/.gem && gem cleanup",
+    "purge:install": "yarn install && cd ios && bundle install && bundle exec pod install",
+    "purge": "npm run purge:js && npm run purge:android && npm run purge:ios && npm run purge:gem && npm run purge:install"
   },
   "dependencies": {
     "react": "18.3.1",
