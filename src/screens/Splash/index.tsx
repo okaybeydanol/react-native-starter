@@ -36,15 +36,15 @@ const SplashScreen = () => {
 
   return (
     <View style={styles.container}>
-      {isLoading && <Text>Loading...</Text>}
+      {isLoading && <Text style={styles.text}>Loading...</Text>}
 
       {isReady && (
         <>
           {isLogin ? (
-            <Text>SplashScreen</Text>
+            <Text style={styles.text}>SplashScreen</Text>
           ) : (
             <TouchableOpacity onPress={handleLogin}>
-              <Text>Login</Text>
+              <Text style={styles.text}>Login</Text>
             </TouchableOpacity>
           )}
         </>
