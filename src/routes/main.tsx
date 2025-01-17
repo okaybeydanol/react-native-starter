@@ -5,12 +5,12 @@ import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import {defaultNavigatorOptions} from '@constants/navigationConfig';
 
 // Types
-import {MainNavigatorParams} from '@routes/types';
+import {MainStack} from '@routes/types';
 
 // Navigators
 import SplashNavigator from './splash';
 
-const Main = createNativeStackNavigator<MainNavigatorParams>();
+const Main = createNativeStackNavigator<MainStack>();
 const MainNavigator = () => {
   return (
     <Main.Navigator

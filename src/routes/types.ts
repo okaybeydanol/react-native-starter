@@ -1,16 +1,22 @@
 import {NavigatorScreenParams} from '@react-navigation/native';
 
 // Root stack
-export type RootStackParams = {
-  MainNavigator: NavigatorScreenParams<MainNavigatorParams>;
+export type RootStack = {
+  MainNavigator: NavigatorScreenParams<MainStack>;
 };
 
 // Main stack
-export type MainNavigatorParams = {
-  SplashNavigator: NavigatorScreenParams<SplashNavigatorParams>;
+export type MainStack = {
+  SplashNavigator: NavigatorScreenParams<SplashStack>;
 };
 
 // Splash stack
-export type SplashNavigatorParams = {
+export type SplashStack = {
   SplashScreen: undefined;
 };
+
+declare global {
+  namespace ReactNavigation {
+    interface RootParamList extends RootStack {}
+  }
+}

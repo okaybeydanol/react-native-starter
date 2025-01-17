@@ -6,13 +6,13 @@ import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import {defaultNavigatorOptions} from '@constants/navigationConfig';
 
 // Types
-import {RootStackParams} from './types';
+import {RootStack} from './types';
 
 // Navigators
 import MainNavigator from './main';
 
-const Root = createNativeStackNavigator<RootStackParams>();
-const RootStack = () => {
+const Root = createNativeStackNavigator<RootStack>();
+const RootNavigator = () => {
   return (
     <Root.Navigator screenOptions={defaultNavigatorOptions}>
       <Root.Screen name="MainNavigator" component={MainNavigator} />
@@ -23,7 +23,7 @@ const RootStack = () => {
 const Navigation = () => {
   return (
     <NavigationContainer>
-      <RootStack />
+      <RootNavigator />
     </NavigationContainer>
   );
 };
