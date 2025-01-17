@@ -15,6 +15,9 @@ import {TypedUseSelectorHook, useDispatch, useSelector} from 'react-redux';
 // Reducers
 import userReducer from './slices/user';
 
+// Api
+import {commonApi} from './api';
+
 // Configuration for redux-persist
 const rootPersistConfig = {
   key: 'root',
@@ -24,6 +27,7 @@ const rootPersistConfig = {
 
 // Combine all reducers into a single root reducer
 const rootReducer = combineReducers({
+  [commonApi.reducerPath]: commonApi.reducer,
   user: userReducer,
 });
 
@@ -38,7 +42,7 @@ export const store = configureStore({
       serializableCheck: {
         ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
       },
-    }),
+    }).concat(commonApi.middleware),
 });
 
 // Infer the RootState type from the store's state

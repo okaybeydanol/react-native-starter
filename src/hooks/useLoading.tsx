@@ -4,26 +4,22 @@ import {useState} from 'react';
 import {UseLoadingReturn} from './types';
 
 /**
- * Custom hook to manage loading state.
+ * Custom hook to manage and update the loading state.
  *
- * @param {boolean} initialState - The initial loading state (default: true).
+ * @param {boolean} initialState - Specifies the initial loading state (default: true).
  * @returns {UseLoadingReturn} - An object containing:
- *   - `isLoading` (boolean): The current loading state.
- *   - `startLoading` (function): A function to set loading to `true`.
- *   - `stopLoading` (function): A function to set loading to `false`.
+ *   - `isLoading` (boolean): Represents the current loading status.
+ *   - `setLoading` (function): Updates the loading state to either `true` or `false`.
  */
 const useLoading = (initialState: boolean = true): UseLoadingReturn => {
   // State to track the loading status
   const [isLoading, setIsLoading] = useState(initialState);
 
-  // Function to set the loading state to true
-  const startLoading = () => setIsLoading(true);
-
-  // Function to set the loading state to false
-  const stopLoading = () => setIsLoading(false);
+  // Function to set the loading state to true or false
+  const setLoading = (status: boolean) => setIsLoading(status);
 
   // Return the loading state and control functions
-  return {isLoading, startLoading, stopLoading};
+  return {isLoading, setLoading};
 };
 
 export default useLoading;
