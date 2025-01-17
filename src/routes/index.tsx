@@ -2,17 +2,16 @@ import React from 'react';
 import {NavigationContainer} from '@react-navigation/native';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 
-// Constant
+// Constants
 import {defaultNavigatorOptions} from '@constants/navigationConfig';
 
-// Type
+// Types
 import {RootStackParams} from './types';
 
-// Navigator
-import {MainNavigator} from './main';
+// Navigators
+import MainNavigator from './main';
 
 const Root = createNativeStackNavigator<RootStackParams>();
-
 const RootStack = () => {
   return (
     <Root.Navigator screenOptions={defaultNavigatorOptions}>
