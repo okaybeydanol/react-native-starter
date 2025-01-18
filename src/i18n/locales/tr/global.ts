@@ -8,4 +8,8 @@ export default {
     tr: 'Türkçe',
     en: 'İngilizce',
   },
+  theme: {
+    dark: 'Karanlık',
+    light: 'Aydınlık',
+  },
 };

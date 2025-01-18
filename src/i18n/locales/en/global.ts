@@ -8,4 +8,8 @@ export default {
     tr: 'Turkish',
     en: 'English',
   },
+  theme: {
+    dark: 'Dark',
+    light: 'Light',
+  },
 };

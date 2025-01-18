@@ -1,33 +1,30 @@
 import React, {useEffect} from 'react';
-import {
-  View,
-  Text,
-  TouchableOpacity,
-  ActivityIndicator,
-  ScrollView,
-} from 'react-native';
+import {View, Text, ActivityIndicator, ScrollView} from 'react-native';
 import {SafeAreaView} from 'react-native-safe-area-context';
 import {useTranslation} from 'react-i18next';
+import {useTheme} from '@react-navigation/native';
 
 // Stores
-import {useAppDispatch, useAppSelector} from '@store/index';
-import {setLogin} from '@store/slices/user';
+import {useAppSelector} from '@store/index';
 
 // Hooks
 import useLoading from '@hooks/useLoading';
 
 // Styles
-import styles from './styles';
+import getStyles from './styles';
 
 // APIs
 import {useLazyGetAllQuery} from '@store/api';
+import SplashHeader from '@components/Splash/Header';
 
 const SplashScreen = () => {
+  const {colors} = useTheme();
+  const styles = React.useMemo(() => getStyles(colors), [colors]);
+
   // Access the login state from the Redux store
   const isLogin = useAppSelector(state => state.user.isLogin);
-  const dispatch = useAppDispatch();
 
-  const {t, i18n} = useTranslation(['global', 'data']);
+  const {t} = useTranslation(['global', 'data']);
 
   // API hooks
   const [triggerGetAll, {data, isFetching}] = useLazyGetAllQuery();
@@ -45,36 +42,10 @@ const SplashScreen = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isLogin]);
 
-  // Handle login and logout actions
-  const authActionHandler = (status: boolean) => {
-    dispatch(setLogin({isLogin: status}));
-    if (status) {
-      triggerGetAll();
-    }
-  };
-
-  // Change the language handler
-  const changeLanguageHandler = () => {
-    i18n.changeLanguage(i18n.language === 'en' ? 'tr' : 'en');
-  };
-
   return (
     <SafeAreaView style={styles.container}>
       {/* Fixed Header Section */}
-      <View style={styles.header}>
-        <TouchableOpacity
-          onPress={() => authActionHandler(!isLogin)}
-          style={styles.button}>
-          <Text style={styles.text}>
-            {isLogin ? t('auth.logout') : t('auth.login')}
-          </Text>
-        </TouchableOpacity>
-        <TouchableOpacity onPress={changeLanguageHandler} style={styles.button}>
-          <Text style={styles.text}>
-            {i18n.language === 'en' ? t('lang.en') : t('lang.tr')}
-          </Text>
-        </TouchableOpacity>
-      </View>
+      <SplashHeader setLoading={setLoading} />
 
       {/* Scrollable Content Section */}
       <ScrollView
@@ -97,10 +68,18 @@ const SplashScreen = () => {
               ))}
             </>
           ) : (
-            <Text style={styles.text}>{t('noData', {ns: 'data'})}</Text>
+            <View style={styles.productContainer}>
+              <Text numberOfLines={1} style={styles.text}>
+                {t('noData', {ns: 'data'})}
+              </Text>
+            </View>
           )
         ) : (
-          <Text style={styles.text}>{t('loginToView')}</Text>
+          <View style={styles.productContainer}>
+            <Text numberOfLines={1} style={styles.text}>
+              {t('loginToView')}
+            </Text>
+          </View>
         )}
       </ScrollView>
     </SafeAreaView>

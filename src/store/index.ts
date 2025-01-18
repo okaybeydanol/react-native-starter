@@ -14,6 +14,7 @@ import {useDispatch, useSelector} from 'react-redux';
 
 // Reducers
 import userReducer from './slices/user';
+import themeReducer from './slices/theme';
 
 // Api
 import {commonApi} from './api';
@@ -29,6 +30,7 @@ const rootPersistConfig = {
 const rootReducer = combineReducers({
   [commonApi.reducerPath]: commonApi.reducer,
   user: userReducer,
+  theme: themeReducer,
 });
 
 // Create a persisted reducer using the configuration
