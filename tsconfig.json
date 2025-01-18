@@ -8,6 +8,7 @@
       "@constants/*": ["constants/*"],
       "@helpers/*": ["helpers/*"],
       "@hooks/*": ["hooks/*"],
+      "@i18n/*": ["i18n/*"],
       "@routes/*": ["routes/*"],
       "@store/*": ["store/*"],
       "@screens/*": ["screens/*"],

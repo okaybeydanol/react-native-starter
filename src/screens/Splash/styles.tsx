@@ -9,13 +9,15 @@ const styles = StyleSheet.create({
   },
   header: {
     backgroundColor: '#ffffff',
-    padding: 16,
     borderBottomWidth: 1,
     borderBottomColor: '#e0e0e0',
+    flexDirection: 'row',
+    justifyContent: 'space-between',
   },
   button: {
-    backgroundColor: '#007bff',
+    backgroundColor: '#e0e0e0',
     padding: 12,
+    margin: 8,
     borderRadius: 8,
   },
   text: {
@@ -32,7 +34,8 @@ const styles = StyleSheet.create({
     padding: 16,
   },
   productContainer: {
-    backgroundColor: '#f9f9f9',
+    backgroundColor: '#e0e0e0',
+    borderRadius: 8,
     padding: 8,
     marginBottom: 16,
   },
