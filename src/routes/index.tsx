@@ -22,7 +22,9 @@ import MainNavigator from './main';
 const Root = createNativeStackNavigator<RootStack>();
 const RootNavigator = () => {
   return (
-    <Root.Navigator screenOptions={defaultNavigatorOptions}>
+    <Root.Navigator
+      initialRouteName="MainNavigator"
+      screenOptions={defaultNavigatorOptions}>
       <Root.Screen name="MainNavigator" component={MainNavigator} />
     </Root.Navigator>
   );

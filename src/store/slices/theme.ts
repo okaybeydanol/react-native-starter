@@ -4,7 +4,7 @@ import {createSlice, PayloadAction} from '@reduxjs/toolkit';
 import {ThemeSliceParams} from '../types';
 
 const initialState: ThemeSliceParams = {
-  mode: 'system',
+  mode: 'dark',
 };
 
 export const themeSlice = createSlice({

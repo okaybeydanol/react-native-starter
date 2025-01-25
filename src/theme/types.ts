@@ -2,7 +2,6 @@ import {Theme} from '@react-navigation/native';
 
 export interface MyTheme extends Theme {
   colors: Theme['colors'] & {
-    primary: string;
     secondary: string;
     tertiary: {
       light: string;

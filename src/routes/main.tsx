@@ -9,6 +9,7 @@ import {MainStack} from '@routes/types';
 
 // Navigators
 import SplashNavigator from './splash';
+import TabNavigator from './tab';
 
 const Main = createNativeStackNavigator<MainStack>();
 const MainNavigator = () => {
@@ -17,6 +18,7 @@ const MainNavigator = () => {
       initialRouteName="SplashNavigator"
       screenOptions={defaultNavigatorOptions}>
       <Main.Screen name="SplashNavigator" component={SplashNavigator} />
+      <Main.Screen name="TabNavigator" component={TabNavigator} />
     </Main.Navigator>
   );
 };
