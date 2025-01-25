@@ -1,8 +1,7 @@
 import React, {useEffect} from 'react';
 import {useTheme} from '@react-navigation/native';
-import {View, Text, ActivityIndicator} from 'react-native';
+import {View, Text, ActivityIndicator, FlatList} from 'react-native';
 import {useTranslation} from 'react-i18next';
-import {FlashList} from '@shopify/flash-list';
 
 // APIs
 import {useLazyGetAllQuery} from '@store/api';
@@ -56,9 +55,8 @@ const HomeMain = ({isLoading, setLoading}: HomeMainProps) => {
       ) : isLogin ? (
         data && data.products ? (
           <>
-            <FlashList
+            <FlatList
               data={data.products.concat(data.products).concat(data.products)}
-              estimatedItemSize={38}
               contentContainerStyle={styles.contentContainer}
               keyExtractor={(item, index) => `${item.id}${index}`}
               renderItem={renderItem}

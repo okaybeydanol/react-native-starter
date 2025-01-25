@@ -10,7 +10,7 @@ import Navigation from '@routes/index';
 // Store
 import {persistor, store} from '@store/index';
 
-const App = () => {
+const App = (): React.JSX.Element => {
   return (
     <GestureHandlerRootView style={styles.container}>
       <Provider store={store}>
