@@ -1,6 +1,6 @@
 // User
 export interface UserSliceParams {
-  isLogin: boolean;
+  isLoggedIn: boolean;
 }
 
 // THEME

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useMemo} from 'react';
 import {View} from 'react-native';
 import {useTheme} from '@react-navigation/native';
 import {useTranslation} from 'react-i18next';
@@ -8,63 +8,54 @@ import {useAppDispatch, useAppSelector} from '@store/index';
 import {setTheme} from '@store/slices/theme';
 import {setLogin} from '@store/slices/user';
 
+// Components
+import HomeHeaderButton from './Button';
+
 // Types
 import {HomeHeaderButtonProps, HomeHeaderParams} from '../types';
 
 // Styles
 import getStyles from './styles';
 
-// Components
-import HomeHeaderButton from './Button';
-
 const HomeHeader = ({setLoading}: HomeHeaderParams) => {
   const {colors, dark} = useTheme();
-  const styles = React.useMemo(() => getStyles(colors), [colors]);
-  const {i18n} = useTranslation('global');
-
-  const isLogin = useAppSelector(state => state.user.isLogin);
+  const styles = useMemo(() => getStyles(colors), [colors]);
+  const {i18n} = useTranslation();
+  const isLoggedIn = useAppSelector(state => state.user.isLoggedIn);
   const dispatch = useAppDispatch();
 
-  // Handle login and logout actions
-  const authActionHandler = () => {
-    setLoading(true);
-    dispatch(setLogin({isLogin: !isLogin}));
-  };
-
-  // Change the language handler
-  const changeLanguageHandler = () => {
-    const newLanguage = i18n.language === 'en' ? 'tr' : 'en';
-    i18n.changeLanguage(newLanguage);
-  };
-
-  // Change the theme handler
-  const changeThemeHandler = () => {
-    dispatch(setTheme({mode: dark ? 'light' : 'dark'}));
-  };
-
-  const buttons: HomeHeaderButtonProps[] = [
-    {
-      onPress: authActionHandler,
-      condition: isLogin,
-      keys: ['auth.logout', 'auth.login'],
-    },
-    {
-      onPress: changeThemeHandler,
-      condition: dark,
-      keys: ['theme.light', 'theme.dark'],
-    },
-    {
-      onPress: changeLanguageHandler,
-      condition: i18n.language === 'en',
-      keys: ['lang.tr', 'lang.en'],
-    },
-  ];
-
-  const renderButtons = (button: HomeHeaderButtonProps) => (
-    <HomeHeaderButton key={button.keys.join('-')} {...button} />
+  const buttons = useMemo<HomeHeaderButtonProps[]>(
+    () => [
+      {
+        onPress: () => {
+          setLoading(true);
+          dispatch(setLogin({isLoggedIn: !isLoggedIn}));
+        },
+        condition: isLoggedIn,
+        keys: ['auth.logout', 'auth.login'],
+      },
+      {
+        onPress: () => dispatch(setTheme({mode: dark ? 'light' : 'dark'})),
+        condition: dark,
+        keys: ['theme.light', 'theme.dark'],
+      },
+      {
+        onPress: () =>
+          i18n.changeLanguage(i18n.language === 'en' ? 'tr' : 'en'),
+        condition: i18n.language === 'en',
+        keys: ['lang.tr', 'lang.en'],
+      },
+    ],
+    [isLoggedIn, dark, i18n, setLoading, dispatch],
   );
 
-  return <View style={styles.header}>{buttons.map(renderButtons)}</View>;
+  return (
+    <View style={styles.header}>
+      {buttons.map((button, index) => (
+        <HomeHeaderButton key={`header-button-${index}`} {...button} />
+      ))}
+    </View>
+  );
 };
 
 export default HomeHeader;

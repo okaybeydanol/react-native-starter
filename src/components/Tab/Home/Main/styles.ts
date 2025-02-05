@@ -14,7 +14,7 @@ const getStyles = (colors: MyTheme['colors']) =>
       alignItems: 'center',
     },
     contentContainer: {
-      paddingVertical: 16,
+      paddingTop: 16,
     },
     text: {
       fontSize: 16,

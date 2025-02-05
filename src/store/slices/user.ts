@@ -5,7 +5,7 @@ import {UserSliceParams} from '../types';
 
 // Initial state for the user slice
 const initialState: UserSliceParams = {
-  isLogin: false,
+  isLoggedIn: false,
 };
 
 // Create the user slice, which contains reducers to modify the user state
@@ -18,7 +18,7 @@ export const userSlice = createSlice({
       state: UserSliceParams,
       action: PayloadAction<UserSliceParams>,
     ) => {
-      state.isLogin = action.payload.isLogin;
+      state.isLoggedIn = action.payload.isLoggedIn;
     },
   },
 });

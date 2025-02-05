@@ -1,87 +1,81 @@
-import React, {useEffect} from 'react';
+import React, {useEffect, useMemo} from 'react';
 import {useTheme} from '@react-navigation/native';
-import {View, Text, ActivityIndicator, FlatList} from 'react-native';
-import {useTranslation} from 'react-i18next';
+import {View, FlatList} from 'react-native';
 
 // APIs
 import {useLazyGetAllQuery} from '@store/api';
 
 // Stores
 import {useAppSelector} from '@store/index';
+import {Product} from '@store/api/types';
+
+// Components
+import ProductListItem from './ProductListItem';
+import LoadingIndicator from '@components/UI/LoadingIndicator';
+import LoginPrompt from './LoginPrompt';
+import ErrorView from './ErrorView';
+import NoDataView from './NoDataView';
 
 // Styles
 import getStyles from './styles';
 
 // Types
 import {HomeMainProps} from '../types';
-import {Product} from '@store/api/types';
 
 const HomeMain = ({isLoading, setLoading}: HomeMainProps) => {
   const {colors} = useTheme();
-  const styles = React.useMemo(() => getStyles(colors), [colors]);
+  const styles = useMemo(() => getStyles(colors), [colors]);
+  const isLoggedIn = useAppSelector(state => state.user.isLoggedIn);
+  const [triggerGetAll, {data, error}] = useLazyGetAllQuery();
 
-  const {t} = useTranslation(['global', 'data']);
-
-  // Access the login state from the Redux store
-  const isLogin = useAppSelector(state => state.user.isLogin);
-
-  // API hooks
-  const [triggerGetAll, {data}] = useLazyGetAllQuery();
-
-  // Simulate initial loading when the app starts
   useEffect(() => {
-    if (isLogin) {
-      triggerGetAll().finally(() => setLoading(false));
-    } else {
-      setLoading(false);
-    }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [isLogin]);
+    const fetchData = async () => {
+      if (isLoggedIn) {
+        try {
+          await triggerGetAll().unwrap();
+        } catch (err) {
+          console.error('Failed to fetch products:', err);
+        } finally {
+          setLoading(false);
+        }
+      } else {
+        setLoading(false);
+      }
+    };
+
+    fetchData();
+  }, [isLoggedIn, setLoading, triggerGetAll]);
 
   const renderItem = ({item}: {item: Product}) => (
-    <View style={styles.productContainer}>
-      <Text numberOfLines={1} style={styles.text}>
-        {item.title} ({item.meta.barcode})
-      </Text>
-    </View>
+    <ProductListItem item={item} />
   );
 
-  return (
-    <>
-      {isLoading ? (
-        <View style={styles.loading}>
-          <ActivityIndicator size="large" color={colors.gray[600]} />
-        </View>
-      ) : isLogin ? (
-        data && data.products ? (
-          <>
-            <FlatList
-              data={data.products.concat(data.products).concat(data.products)}
-              contentContainerStyle={styles.contentContainer}
-              keyExtractor={(item, index) => `${item.id}${index}`}
-              renderItem={renderItem}
-            />
-          </>
-        ) : (
-          <View style={styles.container}>
-            <View style={styles.productContainer}>
-              <Text numberOfLines={1} style={styles.text}>
-                {t('noData', {ns: 'data'})}
-              </Text>
-            </View>
-          </View>
-        )
-      ) : (
-        <View style={styles.container}>
-          <View style={styles.productContainer}>
-            <Text numberOfLines={1} style={styles.text}>
-              {t('loginToView')}
-            </Text>
-          </View>
-        </View>
-      )}
-    </>
-  );
+  const renderContent = () => {
+    if (isLoading) {
+      return <LoadingIndicator color={'tertiary.light'} />;
+    }
+    if (!isLoggedIn) {
+      return <LoginPrompt />;
+    }
+    if (error) {
+      return <ErrorView />;
+    }
+    if (!data?.products?.length) {
+      return <NoDataView />;
+    }
+
+    return (
+      <FlatList
+        data={data.products.concat(data.products).concat(data.products)}
+        contentContainerStyle={styles.contentContainer}
+        keyExtractor={(item, index) => `${item.id}${index}`}
+        renderItem={renderItem}
+        showsVerticalScrollIndicator={false}
+      />
+    );
+  };
+
+  return <View style={styles.container}>{renderContent()}</View>;
 };
 
 export default HomeMain;
