@@ -1,4 +1,4 @@
-import React, {useEffect, useMemo} from 'react';
+import React, {useCallback, useEffect, useMemo} from 'react';
 import {useTheme} from '@react-navigation/native';
 import {View, FlatList} from 'react-native';
 
@@ -46,8 +46,14 @@ const HomeMain = ({isLoading, setLoading}: HomeMainProps) => {
     fetchData();
   }, [isLoggedIn, setLoading, triggerGetAll]);
 
-  const renderItem = ({item}: {item: Product}) => (
-    <ProductListItem item={item} />
+  const renderItem = useCallback(
+    ({item}: {item: Product}) => <ProductListItem item={item} />,
+    [],
+  );
+
+  const keyExtractor = useCallback(
+    (item: Product) => `${item.id}-${item.brand}`,
+    [],
   );
 
   const renderContent = () => {
@@ -68,7 +74,7 @@ const HomeMain = ({isLoading, setLoading}: HomeMainProps) => {
       <FlatList
         data={data.products.concat(data.products).concat(data.products)}
         contentContainerStyle={styles.contentContainer}
-        keyExtractor={(item, index) => `${item.id}${index}`}
+        keyExtractor={keyExtractor}
         renderItem={renderItem}
         showsVerticalScrollIndicator={false}
       />
