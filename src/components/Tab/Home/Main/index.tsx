@@ -12,9 +12,7 @@ import {Product} from '@store/api/types';
 // Components
 import ProductListItem from './ProductListItem';
 import LoadingIndicator from '@components/UI/LoadingIndicator';
-import LoginPrompt from './LoginPrompt';
-import ErrorView from './ErrorView';
-import NoDataView from './NoDataView';
+import CommonView from './CommonView';
 
 // Styles
 import getStyles from './styles';
@@ -61,13 +59,13 @@ const HomeMain = ({isLoading, setLoading}: HomeMainProps) => {
       return <LoadingIndicator color={'tertiary.light'} />;
     }
     if (!isLoggedIn) {
-      return <LoginPrompt />;
+      return <CommonView ns="global" key="loginToView" />;
     }
     if (error) {
-      return <ErrorView />;
+      return <CommonView ns="data" key="error" />;
     }
     if (!data?.products?.length) {
-      return <NoDataView />;
+      return <CommonView ns="data" key="noData" />;
     }
 
     return (

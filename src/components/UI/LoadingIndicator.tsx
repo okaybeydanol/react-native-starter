@@ -1,24 +1,22 @@
-import React from 'react';
+import React, {useCallback} from 'react';
 import {View, ActivityIndicator, StyleSheet} from 'react-native';
 import {useTheme} from '@react-navigation/native';
 
 // Types
-import {MyTheme} from '@theme/types';
-import {NestedKeys} from '@utils/types';
-
-interface LoadingIndicatorProps {
-  color: NestedKeys<MyTheme['colors']>;
-}
+import {ColorPath, LoadingIndicatorProps} from './types';
 
 const LoadingIndicator = ({color}: LoadingIndicatorProps) => {
   const {colors} = useTheme();
 
   // Renk değerini dinamik olarak çözümle
-  const resolveColor = (colorPath: NestedKeys<MyTheme['colors']>): string => {
-    return colorPath.split('.').reduce((acc, current) => {
-      return acc[current as keyof typeof acc];
-    }, colors as any);
-  };
+  const resolveColor = useCallback(
+    (colorPath: ColorPath): string => {
+      return colorPath.split('.').reduce((acc, current) => {
+        return acc[current as keyof typeof acc];
+      }, colors as any);
+    },
+    [colors],
+  );
 
   return (
     <View style={styles.loading}>

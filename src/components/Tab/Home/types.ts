@@ -1,10 +1,10 @@
 // Types
-import {NestedKeys} from '@utils/types';
+import {NestedDotNotationPaths} from '@utils/object';
 
 // Resources
 import {resources} from '@i18n/index';
 
-type TranslationKeys = NestedKeys<(typeof resources)['tr']['global']>;
+type TranslationKeys = NestedDotNotationPaths<typeof resources.tr.global>;
 type KeyPair = [TranslationKeys, TranslationKeys];
 
 export interface HomeHeaderButtonProps {
