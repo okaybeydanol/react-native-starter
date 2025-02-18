@@ -59,13 +59,13 @@ const HomeMain = ({isLoading, setLoading}: HomeMainProps) => {
       return <LoadingIndicator color={'tertiary.light'} />;
     }
     if (!isLoggedIn) {
-      return <CommonView ns="global" key="loginToView" />;
+      return <CommonView ns="global" tKey="loginToView" />;
     }
     if (error) {
-      return <CommonView ns="data" key="error" />;
+      return <CommonView ns="data" tKey="error" />;
     }
     if (!data?.products?.length) {
-      return <CommonView ns="data" key="noData" />;
+      return <CommonView ns="data" tKey="noData" />;
     }
 
     return (

@@ -1,3 +1,5 @@
+import {FlatNamespace} from 'i18next';
+
 // Types
 import {NestedDotNotationPaths} from '@utils/object';
 
@@ -20,4 +22,9 @@ export interface HomeHeaderParams {
 export interface HomeMainProps {
   isLoading: boolean;
   setLoading: (status: boolean) => void;
+}
+
+export interface CommonViewProps<K extends FlatNamespace> {
+  tKey: NestedDotNotationPaths<(typeof resources.tr)[K]>;
+  ns: K;
 }
