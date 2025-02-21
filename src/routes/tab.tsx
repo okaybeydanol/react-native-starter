@@ -4,16 +4,16 @@ import {
   createBottomTabNavigator,
 } from '@react-navigation/bottom-tabs';
 
-// Component
+// Components
 import TabBar from '@components/TabBar';
 
 // Constants
-import {defaultTabOptions} from '@constants/navigationConfig';
+import {DEFAULT_TAB_OPTIONS} from '@constants/navigationConfig';
 
-// Type
+// Types
 import {TabStack} from './types';
 
-// Screen
+// Screens
 import HomeScreen from '@screens/Tab/Home';
 import ProfileScreen from '@screens/Tab/Profile';
 
@@ -29,7 +29,7 @@ const TabNavigator = () => {
   return (
     <Tab.Navigator
       initialRouteName="HomeScreen"
-      screenOptions={defaultTabOptions}
+      screenOptions={DEFAULT_TAB_OPTIONS}
       tabBar={tabBar}>
       <Tab.Screen name="HomeScreen" component={HomeScreen} />
       <Tab.Screen name="ProfileScreen" component={ProfileScreen} />

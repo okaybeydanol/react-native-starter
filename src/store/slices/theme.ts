@@ -1,6 +1,6 @@
 import {createSlice, PayloadAction} from '@reduxjs/toolkit';
 
-// Type
+// Types
 import {ThemeSliceParams} from '../types';
 
 const initialState: ThemeSliceParams = {

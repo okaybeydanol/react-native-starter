@@ -1,9 +1,9 @@
 import {createApi} from '@reduxjs/toolkit/query/react';
 
-// Middleware
+// Middlewares
 import {baseQueryAcceptJson} from './middleware';
 
-// Type
+// Types
 import {ProductsAllApiResponse, ProductSingleApiResponse} from './types';
 
 export const commonApi = createApi({

@@ -16,7 +16,7 @@ import {useDispatch, useSelector} from 'react-redux';
 import userReducer from './slices/user';
 import themeReducer from './slices/theme';
 
-// Api
+// Apis
 import {commonApi} from './api';
 
 // Configuration for redux-persist

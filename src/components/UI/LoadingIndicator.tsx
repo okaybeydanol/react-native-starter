@@ -8,7 +8,6 @@ import {ColorPath, LoadingIndicatorProps} from './types';
 const LoadingIndicator = ({color}: LoadingIndicatorProps) => {
   const {colors} = useTheme();
 
-  // Renk değerini dinamik olarak çözümle
   const resolveColor = useCallback(
     (colorPath: ColorPath): string => {
       return colorPath.split('.').reduce((acc, current) => {

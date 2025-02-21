@@ -1,6 +1,6 @@
 import '@react-navigation/native';
 
-// Type
+// Types
 import {MyTheme} from '@theme/types';
 
 declare module '@react-navigation/native' {

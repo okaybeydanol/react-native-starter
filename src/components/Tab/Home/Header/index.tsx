@@ -3,7 +3,7 @@ import {View} from 'react-native';
 import {useTheme} from '@react-navigation/native';
 import {useTranslation} from 'react-i18next';
 
-// Store
+// Stores
 import {useAppDispatch, useAppSelector} from '@store/index';
 import {setTheme} from '@store/slices/theme';
 import {setLogin} from '@store/slices/user';

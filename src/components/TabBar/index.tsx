@@ -6,7 +6,7 @@ import {BottomTabBarProps} from '@react-navigation/bottom-tabs';
 // Styles
 import getStyles from './styles';
 
-// Component
+// Components
 import TabBarButton from './Button';
 
 export function TabBar(props: BottomTabBarProps) {

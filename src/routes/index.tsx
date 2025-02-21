@@ -4,7 +4,7 @@ import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import {useColorScheme} from 'react-native';
 
 // Constants
-import {defaultNavigatorOptions} from '@constants/navigationConfig';
+import {DEFAULT_NAVIGATOR_OPTIONS} from '@constants/navigationConfig';
 
 // Types
 import {RootStack} from './types';
@@ -13,7 +13,7 @@ import {RootStack} from './types';
 import {lightTheme} from '@theme/light';
 import {darkTheme} from '@theme/dark';
 
-// Store
+// Stores
 import {useAppSelector} from '@store/index';
 
 // Navigators
@@ -24,7 +24,7 @@ const RootNavigator = () => {
   return (
     <Root.Navigator
       initialRouteName="MainNavigator"
-      screenOptions={defaultNavigatorOptions}>
+      screenOptions={DEFAULT_NAVIGATOR_OPTIONS}>
       <Root.Screen name="MainNavigator" component={MainNavigator} />
     </Root.Navigator>
   );

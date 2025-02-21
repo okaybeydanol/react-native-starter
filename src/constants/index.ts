@@ -1,5 +1,5 @@
 // FONT FAMILY
-export const fontFamily = {
+export const FONT_FAMILY = {
   thin: 'Montserrat-Thin',
   extraLight: 'Montserrat-ExtraLight',
   light: 'Montserrat-Light',
@@ -10,17 +10,46 @@ export const fontFamily = {
   extraBold: 'Montserrat-ExtraBold',
 };
 
-export const defaultLocale: Record<string, string> = {
-  Ç: 'C',
+export const DEFAULT_LOCALE_MAP: Record<string, string> = {
   ç: 'c',
-  Ş: 'S',
-  ş: 's',
-  İ: 'I',
-  ı: 'i',
-  Ö: 'O',
-  ö: 'o',
-  Ü: 'U',
-  ü: 'u',
-  Ğ: 'G',
+  Ç: 'c',
   ğ: 'g',
+  Ğ: 'g',
+  ı: 'i',
+  İ: 'i',
+  ö: 'o',
+  Ö: 'o',
+  ş: 's',
+  Ş: 's',
+  ü: 'u',
+  Ü: 'u',
+};
+
+export const LOWER_CASE_MAP: Record<string, string> = {
+  A: 'a',
+  B: 'b',
+  C: 'c',
+  D: 'd',
+  E: 'e',
+  F: 'f',
+  G: 'g',
+  H: 'h',
+  I: 'i',
+  J: 'j',
+  K: 'k',
+  L: 'l',
+  M: 'm',
+  N: 'n',
+  O: 'o',
+  P: 'p',
+  Q: 'q',
+  R: 'r',
+  S: 's',
+  T: 't',
+  U: 'u',
+  V: 'v',
+  W: 'w',
+  X: 'x',
+  Y: 'y',
+  Z: 'z',
 };

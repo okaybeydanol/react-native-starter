@@ -1,6 +1,6 @@
 import 'i18next';
 
-// Constant
+// Resources
 import {resources} from '@i18n/index';
 const locale = resources.en;
 

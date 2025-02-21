@@ -2,7 +2,7 @@ import React from 'react';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 
 // Constants
-import {defaultNavigatorOptions} from '@constants/navigationConfig';
+import {DEFAULT_NAVIGATOR_OPTIONS} from '@constants/navigationConfig';
 
 // Types
 import {SplashStack} from '@routes/types';
@@ -15,7 +15,7 @@ const SplashNavigator = () => {
   return (
     <Splash.Navigator
       initialRouteName="SplashScreen"
-      screenOptions={defaultNavigatorOptions}>
+      screenOptions={DEFAULT_NAVIGATOR_OPTIONS}>
       <Splash.Screen name="SplashScreen" component={SplashScreen} />
     </Splash.Navigator>
   );
