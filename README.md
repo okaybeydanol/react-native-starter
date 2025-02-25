@@ -40,8 +40,7 @@ helpers/
 └── types.ts         # Utility types
 
 hooks/
-├── types.ts         # Hook-related types
-└── useLoading.ts    # Custom hook for loading state management
+└── types.ts         # Hook-related types
 
 i18n/
 ├── locales/         # Translation files
