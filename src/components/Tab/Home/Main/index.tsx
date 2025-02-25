@@ -20,29 +20,26 @@ import getStyles from './styles';
 // Types
 import {HomeMainProps} from '../types';
 
-const HomeMain = ({isLoading, setLoading}: HomeMainProps) => {
+const HomeMain = ({}: HomeMainProps) => {
   const {colors} = useTheme();
   const styles = useMemo(() => getStyles(colors), [colors]);
   const isLoggedIn = useAppSelector(state => state.user.isLoggedIn);
-  const [triggerGetAll, {data, error}] = useLazyGetAllQuery();
+  const [triggerGetAll, {data, isError, isLoading, isFetching}] =
+    useLazyGetAllQuery();
+
+  const fetchData = useCallback(() => {
+    if (isLoggedIn) {
+      try {
+        triggerGetAll();
+      } catch (err) {
+        console.error('Failed to fetch products:', err);
+      }
+    }
+  }, [isLoggedIn, triggerGetAll]);
 
   useEffect(() => {
-    const fetchData = async () => {
-      if (isLoggedIn) {
-        try {
-          await triggerGetAll().unwrap();
-        } catch (err) {
-          console.error('Failed to fetch products:', err);
-        } finally {
-          setLoading(false);
-        }
-      } else {
-        setLoading(false);
-      }
-    };
-
     fetchData();
-  }, [isLoggedIn, setLoading, triggerGetAll]);
+  }, [fetchData]);
 
   const renderItem = useCallback(
     ({item}: {item: Product}) => <ProductListItem item={item} />,
@@ -54,14 +51,14 @@ const HomeMain = ({isLoading, setLoading}: HomeMainProps) => {
     [],
   );
 
-  const renderContent = () => {
-    if (isLoading) {
-      return <LoadingIndicator color={'tertiary.light'} />;
-    }
+  const renderContent = useMemo(() => {
     if (!isLoggedIn) {
       return <CommonView ns="global" tKey="loginToView" />;
     }
-    if (error) {
+    if (isLoading || isFetching) {
+      return <LoadingIndicator color={'tertiary.light'} />;
+    }
+    if (isError) {
       return <CommonView ns="data" tKey="error" />;
     }
     if (!data?.products?.length) {
@@ -77,9 +74,18 @@ const HomeMain = ({isLoading, setLoading}: HomeMainProps) => {
         showsVerticalScrollIndicator={false}
       />
     );
-  };
+  }, [
+    data,
+    isError,
+    isFetching,
+    isLoading,
+    isLoggedIn,
+    keyExtractor,
+    renderItem,
+    styles.contentContainer,
+  ]);
 
-  return <View style={styles.container}>{renderContent()}</View>;
+  return <View style={styles.container}>{renderContent}</View>;
 };
 
 export default HomeMain;

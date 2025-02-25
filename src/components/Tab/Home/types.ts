@@ -2,29 +2,28 @@ import {FlatNamespace} from 'i18next';
 
 // Types
 import {NestedDotNotationPaths} from '@utils/object';
+import {TabStackScreenProps} from '@routes/types';
 
 // Resources
 import {resources} from '@i18n/index';
 
-type TranslationKeys = NestedDotNotationPaths<typeof resources.tr.global>;
-type KeyPair = [TranslationKeys, TranslationKeys];
+// Global
+type TKeys<K extends FlatNamespace> = NestedDotNotationPaths<
+  (typeof resources.tr)[K]
+>;
 
-export interface HomeHeaderButtonProps {
+// Tab Home Header
+export interface HomeHeaderParams extends TabStackScreenProps<'HomeScreen'> {}
+export interface HomeHeaderButtonProps<K extends FlatNamespace> {
   onPress: () => void;
   condition: boolean;
-  keys: KeyPair;
-}
-
-export interface HomeHeaderParams {
-  setLoading: (status: boolean) => void;
-}
-
-export interface HomeMainProps {
-  isLoading: boolean;
-  setLoading: (status: boolean) => void;
-}
-
-export interface CommonViewProps<K extends FlatNamespace> {
-  tKey: NestedDotNotationPaths<(typeof resources.tr)[K]>;
+  tKeys: [TKeys<K>, TKeys<K>];
   ns: K;
+}
+
+// Tab Home Main
+export interface HomeMainProps extends TabStackScreenProps<'HomeScreen'> {}
+export interface CommonViewProps<K extends FlatNamespace> {
+  ns: K;
+  tKey: TKeys<K>;
 }

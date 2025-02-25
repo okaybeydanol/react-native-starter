@@ -12,48 +12,48 @@ import {setLogin} from '@store/slices/user';
 import HomeHeaderButton from './Button';
 
 // Types
-import {HomeHeaderButtonProps, HomeHeaderParams} from '../types';
+import {HomeHeaderParams} from '../types';
 
 // Styles
 import getStyles from './styles';
 
-const HomeHeader = ({setLoading}: HomeHeaderParams) => {
+const HomeHeader = ({}: HomeHeaderParams) => {
   const {colors, dark} = useTheme();
   const styles = useMemo(() => getStyles(colors), [colors]);
   const {i18n} = useTranslation();
   const isLoggedIn = useAppSelector(state => state.user.isLoggedIn);
   const dispatch = useAppDispatch();
 
-  const buttons = useMemo<HomeHeaderButtonProps[]>(
-    () => [
-      {
-        onPress: () => {
-          setLoading(true);
-          dispatch(setLogin({isLoggedIn: !isLoggedIn}));
-        },
-        condition: isLoggedIn,
-        keys: ['auth.logout', 'auth.login'],
-      },
-      {
-        onPress: () => dispatch(setTheme({mode: dark ? 'light' : 'dark'})),
-        condition: dark,
-        keys: ['theme.light', 'theme.dark'],
-      },
-      {
-        onPress: () =>
-          i18n.changeLanguage(i18n.language === 'en' ? 'tr' : 'en'),
-        condition: i18n.language === 'en',
-        keys: ['lang.tr', 'lang.en'],
-      },
-    ],
-    [isLoggedIn, dark, i18n, setLoading, dispatch],
-  );
+  const handlerAuth = () => {
+    dispatch(setLogin({isLoggedIn: !isLoggedIn}));
+  };
+
+  const handlerTheme = () =>
+    dispatch(setTheme({mode: dark ? 'light' : 'dark'}));
+
+  const handlerLang = () =>
+    i18n.changeLanguage(i18n.language === 'en' ? 'tr' : 'en');
 
   return (
     <View style={styles.header}>
-      {buttons.map((button, index) => (
-        <HomeHeaderButton key={`header-button-${index}`} {...button} />
-      ))}
+      <HomeHeaderButton
+        onPress={handlerAuth}
+        condition={isLoggedIn}
+        ns="global"
+        tKeys={['auth.logout', 'auth.login']}
+      />
+      <HomeHeaderButton
+        onPress={handlerTheme}
+        condition={dark}
+        ns="global"
+        tKeys={['theme.light', 'theme.dark']}
+      />
+      <HomeHeaderButton
+        onPress={handlerLang}
+        condition={i18n.language === 'en'}
+        ns="global"
+        tKeys={['lang.tr', 'lang.en']}
+      />
     </View>
   );
 };

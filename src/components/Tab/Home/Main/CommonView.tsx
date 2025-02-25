@@ -16,7 +16,7 @@ const CommonView = <K extends FlatNamespace>({
 }: CommonViewProps<K>) => {
   const {colors} = useTheme();
   const styles = useMemo(() => getStyles(colors), [colors]);
-  const {t} = useTranslation(ns as FlatNamespace);
+  const {t} = useTranslation<FlatNamespace>(ns);
 
   return (
     <View style={styles.container}>
