@@ -15,5 +15,19 @@
       "@theme/*": ["theme/*"],
       "@utils/*": ["utils/*"]
     }
-  }
+  },
+  "include": ["src/**/*", "index.js", "App.tsx", "**/*.d.ts"],
+  "exclude": [
+    "__tests__",
+    ".bundle",
+    "android",
+    "ios",
+    "node_modules",
+    "vendor",
+    "babel.config.js",
+    "jest.config.js",
+    "metro.config.js",
+    "coverage",
+    "tsconfig.json"
+  ]
 }
