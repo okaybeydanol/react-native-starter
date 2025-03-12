@@ -47,7 +47,7 @@ const HomeMain = ({}: HomeMainProps) => {
   );
 
   const keyExtractor = useCallback(
-    (item: Product) => `${item.id}-${item.brand}`,
+    (item: Product, index: number) => `${item.id}-${item.brand}-${index}`,
     [],
   );
 
@@ -65,7 +65,10 @@ const HomeMain = ({}: HomeMainProps) => {
       return <CommonView ns="data" tKey="noData" />;
     }
 
+    // *IMPORTANT : build .env file and add it to the project don't forget
     return (
+      // TODO: Add list empty component
+      // TODO: Add better list component created by me
       <FlatList
         data={data.products.concat(data.products).concat(data.products)}
         contentContainerStyle={styles.contentContainer}

@@ -44,9 +44,3 @@ export type TabStackScreenProps<T extends keyof TabStack> =
     BottomTabScreenProps<TabStack, T>,
     MainStackScreenProps<keyof MainStack>
   >;
-
-declare global {
-  namespace ReactNavigation {
-    interface RootParamList extends RootStack {}
-  }
-}

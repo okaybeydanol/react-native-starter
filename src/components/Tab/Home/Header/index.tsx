@@ -9,7 +9,7 @@ import {setTheme} from '@store/slices/theme';
 import {setLogin} from '@store/slices/user';
 
 // Components
-import HomeHeaderButton from './Button';
+import HomeHeaderButton from './HomeHeaderButton';
 
 // Types
 import {HomeHeaderParams} from '../types';

@@ -1,5 +1,5 @@
 import React, {useMemo} from 'react';
-import {SafeAreaView} from 'react-native';
+import {SafeAreaView} from 'react-native-safe-area-context';
 import {useTheme} from '@react-navigation/native';
 
 // Components
@@ -17,7 +17,7 @@ const HomeScreen = ({navigation, route}: HomeScreenProps) => {
   const styles = useMemo(() => getStyles(colors), [colors]);
 
   return (
-    <SafeAreaView style={styles.container}>
+    <SafeAreaView edges={['top']} style={styles.container}>
       <HomeScreenHeader navigation={navigation} route={route} />
       <HomeScreenMain navigation={navigation} route={route} />
     </SafeAreaView>

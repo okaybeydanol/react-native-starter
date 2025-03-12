@@ -1,7 +1,6 @@
 import React from 'react';
 import {NavigationContainer} from '@react-navigation/native';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
-import {useColorScheme} from 'react-native';
 
 // Constants
 import {DEFAULT_NAVIGATOR_OPTIONS} from '@constants/navigationConfig';
@@ -9,12 +8,8 @@ import {DEFAULT_NAVIGATOR_OPTIONS} from '@constants/navigationConfig';
 // Types
 import {RootStack} from './types';
 
-// Themes
-import {lightTheme} from '@theme/light';
-import {darkTheme} from '@theme/dark';
-
-// Stores
-import {useAppSelector} from '@store/index';
+// Hooks
+import useAppTheme from '@hooks/useAppTheme';
 
 // Navigators
 import MainNavigator from './main';
@@ -31,15 +26,10 @@ const RootNavigator = () => {
 };
 
 const Navigation = () => {
-  const themePreference = useAppSelector(state => state.theme.mode);
-  const isSystem = themePreference === 'system';
-
-  const scheme = useColorScheme();
-  const themeMode = isSystem ? scheme : themePreference;
-  const myTheme = themeMode === 'light' ? lightTheme : darkTheme;
+  const theme = useAppTheme();
 
   return (
-    <NavigationContainer theme={myTheme}>
+    <NavigationContainer theme={theme}>
       <RootNavigator />
     </NavigationContainer>
   );

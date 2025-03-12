@@ -13,9 +13,12 @@ const SplashScreen = ({navigation}: SplashScreenProps) => {
   const styles = React.useMemo(() => getStyles(colors), [colors]);
 
   useEffect(() => {
-    setTimeout(() => {
+    const timer = setTimeout(() => {
+      // TODO: Change to navigate to replace fist look document
       navigation.navigate('TabNavigator', {screen: 'HomeScreen'});
     }, 1000);
+
+    return () => clearTimeout(timer);
   }, [navigation]);
 
   return (

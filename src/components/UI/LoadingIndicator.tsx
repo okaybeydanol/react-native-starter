@@ -1,13 +1,14 @@
-import React, {useCallback} from 'react';
-import {View, ActivityIndicator, StyleSheet} from 'react-native';
 import {useTheme} from '@react-navigation/native';
+import React, {useCallback} from 'react';
+import {ActivityIndicator, StyleSheet, View} from 'react-native';
 
 // Types
 import {ColorPath, LoadingIndicatorProps} from './types';
 
-const LoadingIndicator = ({color}: LoadingIndicatorProps) => {
+const LoadingIndicator = ({color, ...props}: LoadingIndicatorProps) => {
   const {colors} = useTheme();
 
+  // TODO: Find better way to resolve color
   const resolveColor = useCallback(
     (colorPath: ColorPath): string => {
       return colorPath.split('.').reduce((acc, current) => {
@@ -17,9 +18,10 @@ const LoadingIndicator = ({color}: LoadingIndicatorProps) => {
     [colors],
   );
 
+  // TODO: container style should be passed as prop
   return (
-    <View style={styles.loading}>
-      <ActivityIndicator size="large" color={resolveColor(color)} />
+    <View style={[styles.loading]}>
+      <ActivityIndicator size="large" {...props} color={resolveColor(color)} />
     </View>
   );
 };

@@ -4,7 +4,7 @@ import {StyleSheet} from 'react-native';
 import {MyTheme} from '@theme/types';
 
 // Constants
-import {FONT_FAMILY} from '@constants/index';
+import {FONT_FAMILY} from '@constants/typography';
 
 const getStyles = (colors: MyTheme['colors']) =>
   StyleSheet.create({

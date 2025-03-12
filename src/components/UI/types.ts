@@ -1,3 +1,5 @@
+import {ActivityIndicatorProps} from 'react-native';
+
 // Types
 import {MyTheme} from '@theme/types';
 
@@ -5,6 +7,6 @@ import {MyTheme} from '@theme/types';
 import {NestedDotNotationPaths} from '@utils/object';
 
 export type ColorPath = NestedDotNotationPaths<MyTheme['colors']>;
-export interface LoadingIndicatorProps {
+export interface LoadingIndicatorProps extends ActivityIndicatorProps {
   color: ColorPath;
 }
