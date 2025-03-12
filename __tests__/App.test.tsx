@@ -1,13 +1,15 @@
-/**
- * @format
- */
-
+import App from '@App';
+import {cleanup, render} from '@testing-library/react-native';
 import React from 'react';
-import ReactTestRenderer from 'react-test-renderer';
-import App from '../App';
 
-test('renders correctly', async () => {
-  await ReactTestRenderer.act(() => {
-    ReactTestRenderer.create(<App />);
+afterEach(() => {
+  cleanup();
+  jest.clearAllMocks();
+});
+
+describe('App Component', () => {
+  it('renders the navigation component', () => {
+    const {getByTestId} = render(<App />);
+    expect(getByTestId('app-root')).toBeTruthy();
   });
 });

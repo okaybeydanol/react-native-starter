@@ -5,6 +5,7 @@ module.exports = {
       'module-resolver',
       {
         alias: {
+          '@__tests__': './__tests__',
           '@assets': './assets',
           '@components': './src/components',
           '@constants': './src/constants',
@@ -16,6 +17,7 @@ module.exports = {
           '@screens': './src/screens',
           '@theme': './src/theme',
           '@utils': './src/utils',
+          '@App': './src/App.tsx',
         },
       },
     ],

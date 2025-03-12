@@ -3,6 +3,7 @@
   "compilerOptions": {
     "baseUrl": "./src",
     "paths": {
+      "@__tests__/*": ["../__tests__/*"],
       "@assets/*": ["../assets/*"],
       "@components/*": ["components/*"],
       "@constants/*": ["constants/*"],
@@ -13,12 +14,18 @@
       "@store/*": ["store/*"],
       "@screens/*": ["screens/*"],
       "@theme/*": ["theme/*"],
-      "@utils/*": ["utils/*"]
+      "@utils/*": ["utils/*"],
+      "@App": ["App.tsx"]
     }
   },
-  "include": ["src/**/*", "index.js", "App.tsx", "**/*.d.ts"],
+  "include": [
+    "src/**/*",
+    "index.js",
+    "**/*.d.ts",
+    "**/*.test.ts",
+    "**/*.test.tsx"
+  ],
   "exclude": [
-    "__tests__",
     ".bundle",
     "android",
     "ios",
