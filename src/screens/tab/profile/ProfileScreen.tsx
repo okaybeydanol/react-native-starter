@@ -3,7 +3,7 @@ import React from 'react';
 import {Text, View} from 'react-native';
 
 // Types
-import {ProfileScreenProps} from './types';
+import type {ProfileScreenProps} from './types';
 
 // Styles
 import createStyles from './styles';

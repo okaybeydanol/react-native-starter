@@ -9,6 +9,7 @@ declare module 'i18next' {
     resources: {
       data: typeof locale.data;
       global: typeof locale.global;
+      home: typeof locale.home;
     };
   }
 }

@@ -1,7 +1,7 @@
 import {StyleSheet} from 'react-native';
 
 // Types
-import {AppTheme} from '@theme/types';
+import type {AppTheme} from '@theme/types';
 
 const createStyles = (colors: AppTheme['colors']) =>
   StyleSheet.create({

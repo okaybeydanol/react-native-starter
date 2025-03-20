@@ -1,8 +1,8 @@
+import React from 'react';
 import {
   BottomTabBarProps,
   createBottomTabNavigator,
 } from '@react-navigation/bottom-tabs';
-import React from 'react';
 
 // Components
 import TabBar from '@components/tabbar/TabBar';
@@ -11,7 +11,7 @@ import TabBar from '@components/tabbar/TabBar';
 import {defaultTabOptions} from '@constants/navigationConfig';
 
 // Types
-import {TabStack} from './types';
+import type {TabStack} from './types';
 
 // Screens
 import HomeScreen from '@screens/tab/home/HomeScreen';

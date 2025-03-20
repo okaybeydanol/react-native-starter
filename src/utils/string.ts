@@ -3,7 +3,7 @@ import {defaultLocaleMap} from '@constants/localization';
 import {turkishCharsRegex} from '@constants/regex';
 
 // Types
-import {ConvertToLocaleProps} from './types';
+import type {ConvertToLocaleProps} from './types';
 
 export const convertToLocale = ({
   text,

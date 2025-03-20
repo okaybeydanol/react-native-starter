@@ -1,23 +1,52 @@
-import {useTheme} from '@react-navigation/native';
 import React, {useEffect} from 'react';
-import {Image, StyleSheet, Text, View} from 'react-native';
-
-// Constants
-import {windowHeight, windowWidth} from '@constants/dimensions';
+import {Image, Platform, Text, View} from 'react-native';
+import {useTheme} from '@react-navigation/native';
+import {useTranslation} from 'react-i18next';
 
 // Images
 import eterationLogo from '@assets/images/eteration-logo.png';
 
+// Store
+import {useAppDispatch, useAppSelector} from '@store/index';
+import {setLanguage} from '@store/slices/language';
+
+// Helpers
+import {getSystemLocale} from '@helpers/systemLocale';
+
 // Types
-import {fontFamily} from '@constants/typography';
-import {AppTheme} from '@theme/types';
-import {SplashScreenProps} from './types';
+import type {SplashScreenProps} from './types';
+
+// Styles
+import createStyles from './styles';
 
 const SplashScreen: React.FC<SplashScreenProps> = ({navigation}) => {
   const {colors} = useTheme();
   const styles = React.useMemo(() => createStyles(colors), [colors]);
+  const {i18n} = useTranslation();
+  const language = useAppSelector(state => state.language.language);
+  const dispatch = useAppDispatch();
 
   useEffect(() => {
+    let languageCode = 'tr';
+    let locale = 'tr-TR';
+
+    if (language === '') {
+      locale = getSystemLocale();
+      const separator = Platform.OS === 'ios' ? '-' : '_';
+      const localeParts = locale.split(separator);
+      if (localeParts.length > 0 && localeParts[0]) {
+        languageCode = localeParts[0];
+      }
+      dispatch(
+        setLanguage({
+          language: languageCode,
+        }),
+      );
+      i18n.changeLanguage(languageCode);
+    } else {
+      i18n.changeLanguage(language);
+    }
+
     const timer = setTimeout(() => {
       navigation.replace('TabNavigator', {screen: 'HomeScreen'});
     }, 1000);
@@ -52,58 +81,5 @@ const SplashScreen: React.FC<SplashScreenProps> = ({navigation}) => {
     </>
   );
 };
-
-const createStyles = (colors: AppTheme['colors']) =>
-  StyleSheet.create({
-    container: {
-      justifyContent: 'center',
-      alignItems: 'center',
-    },
-    logoContainer: {
-      justifyContent: 'center',
-      alignItems: 'center',
-      width: windowWidth * 1.3,
-      height: windowHeight * 0.6,
-      backgroundColor: colors.splashBackground,
-      borderBottomLeftRadius: 300,
-      borderBottomRightRadius: 300,
-    },
-    logo: {
-      width: 150,
-      height: 150,
-    },
-    textContainer: {
-      marginTop: 50,
-      backgroundColor: colors.background,
-    },
-    title: {
-      color: colors.text,
-      fontFamily: fontFamily.bold,
-      fontSize: 16,
-      marginBottom: 10,
-      textAlign: 'center',
-    },
-    description: {
-      fontFamily: fontFamily.medium,
-      color: colors.text,
-      fontSize: 12,
-      textAlign: 'center',
-      paddingHorizontal: 40,
-    },
-    copyrightContainer: {
-      position: 'absolute',
-      bottom: 30,
-      left: 0,
-      right: 0,
-      justifyContent: 'center',
-      alignItems: 'center',
-    },
-    copyrightText: {
-      fontFamily: fontFamily.medium,
-      color: colors.text,
-      fontSize: 12,
-      textAlign: 'center',
-    },
-  });
 
 export default SplashScreen;

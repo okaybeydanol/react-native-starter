@@ -1,7 +1,7 @@
 import {DefaultTheme} from '@react-navigation/native';
 
 // Types
-import {AppTheme} from './types';
+import type {AppTheme} from './types';
 
 export const lightTheme: AppTheme = {
   ...DefaultTheme,

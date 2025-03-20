@@ -1,4 +1,3 @@
-import {BottomTabBarProps} from '@react-navigation/bottom-tabs';
 import {useTheme} from '@react-navigation/native';
 
 import React from 'react';
@@ -10,9 +9,8 @@ import {getTabSvg} from '@helpers/svg';
 // Styles
 import createStyles from './styles';
 
-export interface StateRoutesMapParams extends BottomTabBarProps {
-  index: number;
-}
+// Types
+import type {StateRoutesMapParams} from '../types';
 
 const TabBarButton = ({state, navigation, index}: StateRoutesMapParams) => {
   const {colors} = useTheme();

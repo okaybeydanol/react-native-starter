@@ -1,3 +1,3 @@
-import {TabStackScreenProps} from '@navigation/types';
+import type {TabStackScreenProps} from '@navigation/types';
 
 export interface HomeScreenProps extends TabStackScreenProps<'HomeScreen'> {}

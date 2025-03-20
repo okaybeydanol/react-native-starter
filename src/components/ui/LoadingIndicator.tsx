@@ -3,7 +3,7 @@ import React, {useCallback} from 'react';
 import {ActivityIndicator, StyleSheet, View} from 'react-native';
 
 // Types
-import {ColorPath, LoadingIndicatorProps} from './types';
+import type {ColorPath, LoadingIndicatorProps} from './types';
 
 const LoadingIndicator = ({color, ...props}: LoadingIndicatorProps) => {
   const {colors} = useTheme();

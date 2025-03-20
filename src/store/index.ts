@@ -15,6 +15,7 @@ import {
 // Reducers
 import themeReducer from './slices/theme';
 import usersReducer from './slices/users';
+import languageReducer from './slices/language';
 
 // Apis
 import {usersApi} from './api';
@@ -23,7 +24,7 @@ import {usersApi} from './api';
 const rootPersistConfig = {
   key: 'root',
   storage: AsyncStorage,
-  whitelist: ['user', 'theme'],
+  whitelist: ['theme', 'language'],
 };
 
 // Combine all reducers into a single root reducer
@@ -31,6 +32,7 @@ const rootReducer = combineReducers({
   [usersApi.reducerPath]: usersApi.reducer,
   users: usersReducer,
   theme: themeReducer,
+  language: languageReducer,
 });
 
 // Create a persisted reducer using the configuration

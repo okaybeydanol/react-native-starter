@@ -22,42 +22,48 @@ Here’s an overview of the project structure:
 src/
 ├── App.tsx                  # Root React component
 ├── components/              # Reusable UI components
+│   ├── home/                # Home-specific components
 │   ├── svgs/                # SVG components including TabBar icons
 │   ├── tab/                 # Components specific to tab screens
 │   ├── tabbar/              # Custom TabBar navigation component
 │   └── ui/                  # Generic UI components (buttons, loaders, etc.)
 ├── constants/               # Application constants
 │   ├── dimensions.ts        # Device dimension constants
+│   ├── localization.ts      # Localization-related constants
 │   ├── navigationConfig.ts  # Navigation-related constants
+│   ├── regex.ts             # Regular expression patterns
 │   ├── typography.ts        # Font and text styling constants
 │   └── urls.ts              # API and resource URLs
 ├── helpers/                 # Helper functions and utilities
 │   ├── collectCoverage.js   # Test coverage collection helpers
 │   ├── svg.tsx              # SVG helper functions
+│   ├── systemLocale.ts      # System locale detection helper
 │   └── types.ts             # Helper type definitions
 ├── hooks/                   # Custom React hooks
 │   └── useAppTheme.ts       # Theme selection hook
 ├── i18n/                    # Internationalization setup
-│   ├── locales/             # Translation files (en, tr)
-│   └── index.ts             # i18n configuration
+│   ├── index.ts             # i18n configuration
+│   └── locales/             # Translation files (en, tr)
 ├── navigation/              # Navigation setup
 │   ├── AppNavigator.tsx     # Root navigator
+│   ├── HomeNavigator.tsx    # Home screen navigator
 │   ├── MainNavigator.tsx    # Main app navigator
 │   ├── SplashNavigator.tsx  # Splash screen navigator
 │   ├── TabNavigator.tsx     # Tab navigator
 │   └── types.ts             # Navigation types
 ├── screens/                 # Application screens
+│   ├── home/                # Home screens
 │   ├── splash/              # Splash screen
 │   └── tab/                 # Tab screens (Home, Profile)
 ├── store/                   # Redux store setup
 │   ├── api/                 # API slice setup
-│   ├── slices/              # Redux slices (theme, user)
+│   ├── slices/              # Redux slices (theme, user, language)
 │   ├── index.ts             # Combines reducers and sets up store
 │   └── types.ts             # Types for Redux and Redux API
 ├── theme/                   # Theming setup
 │   ├── dark.ts              # Dark theme configuration
-│   ├── light.ts             # Light theme configuration
-│   └── types.ts             # Theme-related types
+│   ├── index.ts             # Theme exports
+│   └── light.ts             # Light theme configuration
 ├── types/                   # Global type definitions
 │   ├── i18next.d.ts         # i18n types
 │   ├── image.d.ts           # Image asset types

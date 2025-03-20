@@ -1,5 +1,5 @@
-import {StyleProp, ViewStyle} from 'react-native';
-import {SvgProps} from 'react-native-svg';
+import type {StyleProp, ViewStyle} from 'react-native';
+import type {SvgProps} from 'react-native-svg';
 
 export interface SvgHelperProps {
   code: string;

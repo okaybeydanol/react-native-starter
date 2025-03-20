@@ -1,7 +1,7 @@
 import * as React from 'react';
 import Svg, {Path, SvgProps} from 'react-native-svg';
 
-const ProfileSvg = (props: SvgProps) => {
+const TabProfileSvg = (props: SvgProps) => {
   return (
     <Svg width={20} height={21} viewBox="0 0 20 21" fill="none" {...props}>
       <Path d="M10 4.811a3.556 3.556 0 100 7.111 3.556 3.556 0 000-7.111z" />
@@ -10,4 +10,4 @@ const ProfileSvg = (props: SvgProps) => {
   );
 };
 
-export default ProfileSvg;
+export default TabProfileSvg;

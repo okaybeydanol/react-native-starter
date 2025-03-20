@@ -1,7 +1,7 @@
 import {createSlice, PayloadAction} from '@reduxjs/toolkit';
 
 // Types
-import {ThemeState} from '../types';
+import type {ThemeState} from '../types';
 
 const initialState: ThemeState = {
   mode: 'system',

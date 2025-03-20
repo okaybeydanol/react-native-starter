@@ -1,7 +1,7 @@
 import {DarkTheme} from '@react-navigation/native';
 
 // Types
-import {AppTheme} from './types';
+import type {AppTheme} from './types';
 
 export const darkTheme: AppTheme = {
   ...DarkTheme,
@@ -9,7 +9,7 @@ export const darkTheme: AppTheme = {
     ...DarkTheme.colors,
     primary: '#000000',
     background: '#151617',
-    splashBackground: '#1A2C4F',
+    splashBackground: '#3A4B8C',
     card: '#30353A',
     text: '#FFFFFF',
     border: '#3F4752',

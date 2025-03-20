@@ -1,8 +1,8 @@
-import {FlatNamespace} from 'i18next';
+import type {FlatNamespace} from 'i18next';
 
 // Types
-import {NestedKeysDotNotationPaths} from '@utils/object';
-import {TabStackScreenProps} from '@navigation/types';
+import type {NestedKeysDotNotationPaths} from 'types/object';
+import type {TabStackScreenProps} from '@navigation/types';
 
 // Resources
 import {resources} from '@i18n/index';

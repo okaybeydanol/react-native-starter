@@ -1,5 +1,5 @@
 // Types
-import {UsersResponse} from './api/types';
+import type {UsersResponse} from './api/types';
 
 // User
 export interface UserState {
@@ -13,3 +13,7 @@ export interface ThemeState {
 
 // USERS
 export interface UsersState extends UsersResponse {}
+
+export type LanguageState = {
+  language: string;
+};

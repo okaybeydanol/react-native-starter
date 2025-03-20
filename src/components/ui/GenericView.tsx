@@ -1,15 +1,15 @@
-import {useTheme} from '@react-navigation/native';
-import {FlatNamespace} from 'i18next';
 import React from 'react';
-import {useTranslation} from 'react-i18next';
 import {StyleSheet, Text, View} from 'react-native';
-
-// Types
-import {AppTheme} from '@theme/types';
-import {GenericViewProps} from './types';
+import {useTheme} from '@react-navigation/native';
+import type {FlatNamespace} from 'i18next';
+import {useTranslation} from 'react-i18next';
 
 // Constants
 import {fontFamily} from '@constants/typography';
+
+// Types
+import type {AppTheme} from '@theme/types';
+import type {GenericViewProps} from './types';
 
 const GenericView = <K extends FlatNamespace>({
   ns,

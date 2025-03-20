@@ -1,17 +1,28 @@
 import React from 'react';
 import {StyleSheet} from 'react-native';
-import {SvgProps} from 'react-native-svg';
+import type {SvgProps} from 'react-native-svg';
 
-// Type
-import {SvgHelperProps} from './types';
+// Types
+import type {SvgHelperProps} from './types';
 
 // Tab Svg
-import HomeSvg from '@components/svgs/tab/Home';
-import ProfileSvg from '@components/svgs/tab/Profile';
+import TabHomeSvg from '@components/svgs/tab/Home';
+import TabProfileSvg from '@components/svgs/tab/Profile';
+
+// Home Svg
+import GlobalSettingsSvg from '@components/svgs/global/Settings';
+import GlobalBackSvg from '@components/svgs/global/Back';
+import GlobalCloseSvg from '@components/svgs/global/Close';
 
 const tabSvgs: {[key: string]: React.FC<SvgProps>} = {
-  HomeScreen: HomeSvg,
-  ProfileScreen: ProfileSvg,
+  HomeScreen: TabHomeSvg,
+  ProfileScreen: TabProfileSvg,
+};
+
+const globalSvg: {[key: string]: React.FC<SvgProps>} = {
+  settings: GlobalSettingsSvg,
+  back: GlobalBackSvg,
+  close: GlobalCloseSvg,
 };
 
 const getTabSvg = ({code, style, props}: SvgHelperProps) => {
@@ -22,4 +33,12 @@ const getTabSvg = ({code, style, props}: SvgHelperProps) => {
   }
 };
 
-export {getTabSvg};
+const getGlobalSvg = ({code, style, props}: SvgHelperProps) => {
+  const styles = StyleSheet.flatten(style);
+  if (code in globalSvg) {
+    const FlagComponent = globalSvg[code];
+    return <FlagComponent {...props} style={styles} />;
+  }
+};
+
+export {getTabSvg, getGlobalSvg};

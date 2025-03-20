@@ -1,30 +1,31 @@
-import {useTheme} from '@react-navigation/native';
 import React, {useCallback} from 'react';
+import {useTheme} from '@react-navigation/native';
 import {FlatList, View} from 'react-native';
 
 // APIs
 import {useGetAllUsersQuery} from '@store/api';
 
-// Stores
-import {User} from '@store/api/types';
-
 // Components
 import GenericView from '@components/ui/GenericView';
 import LoadingIndicator from '@components/ui/LoadingIndicator';
-import HomeUsersCard from './HomeUsersCard';
+import HomeUsersCard from './users-card/HomeUsersCard';
+
+// Types
+import type {HomeContentProps} from './types';
+import type {User} from '@store/api/types';
 
 // Styles
 import createStyles from './styles';
-
-// Types
-import {HomeContentProps} from '../types';
 
 const HomeContent = ({}: HomeContentProps) => {
   const {colors} = useTheme();
   const styles = React.useMemo(() => createStyles(colors), [colors]);
   const {isLoading, isError, isFetching, data} = useGetAllUsersQuery();
 
-  const renderItem = ({item}: {item: User}) => <HomeUsersCard user={item} />;
+  const renderItem = useCallback(
+    ({item}: {item: User}) => <HomeUsersCard user={item} />,
+    [],
+  );
 
   const keyExtractor = useCallback(
     (item: User, index: number) => `${item.id}-${item.firstName}-${index}`,

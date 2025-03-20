@@ -4,7 +4,7 @@ import {createApi} from '@reduxjs/toolkit/query/react';
 import {baseQueryAcceptJson} from './middleware';
 
 // Types
-import {UsersResponse} from './types';
+import type {UsersResponse} from './types';
 
 export const usersApi = createApi({
   reducerPath: 'usersApi',

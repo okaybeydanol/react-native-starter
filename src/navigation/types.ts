@@ -1,9 +1,9 @@
-import {BottomTabScreenProps} from '@react-navigation/bottom-tabs';
-import {
+import type {BottomTabScreenProps} from '@react-navigation/bottom-tabs';
+import type {
   CompositeScreenProps,
   NavigatorScreenParams,
 } from '@react-navigation/native';
-import {NativeStackScreenProps} from '@react-navigation/native-stack';
+import type {NativeStackScreenProps} from '@react-navigation/native-stack';
 
 // Root stack
 export type RootStack = {
@@ -17,6 +17,7 @@ export type RootStackScreenProps<T extends keyof RootStack> =
 export type MainStack = {
   SplashNavigator: NavigatorScreenParams<SplashStack>;
   TabNavigator: NavigatorScreenParams<TabStack>;
+  HomeNavigator: NavigatorScreenParams<HomeStack>;
 };
 
 export type MainStackScreenProps<T extends keyof MainStack> =
@@ -42,5 +43,18 @@ export type TabStack = {
 export type TabStackScreenProps<T extends keyof TabStack> =
   CompositeScreenProps<
     BottomTabScreenProps<TabStack, T>,
+    MainStackScreenProps<keyof MainStack>
+  >;
+
+// Home stack
+export type HomeStack = {
+  SettingsScreen: undefined;
+  ThemeScreen: undefined;
+  LanguageScreen: undefined;
+};
+
+export type HomeStackScreenProps<T extends keyof HomeStack> =
+  CompositeScreenProps<
+    NativeStackScreenProps<HomeStack, T>,
     MainStackScreenProps<keyof MainStack>
   >;
