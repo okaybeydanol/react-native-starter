@@ -77,3 +77,8 @@ Gemfile.lock
 !.yarn/sdks
 !.yarn/versions
 yarn.lock
+
+# Environment variables
+.env
+.env.*
+!.env.example
