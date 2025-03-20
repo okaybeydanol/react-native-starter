@@ -12,6 +12,7 @@ import type {NestedKeysDotNotationPaths} from 'types/object';
 export type ColorPath = NestedKeysDotNotationPaths<AppTheme['colors']>;
 export interface LoadingIndicatorProps extends ActivityIndicatorProps {
   color: ColorPath;
+  containerStyle?: StyleProp<ViewStyle>;
 }
 
 export interface GenericViewProps<K extends FlatNamespace> {

@@ -8,8 +8,8 @@ export const usersSlice = createSlice({
   name: 'Users',
   initialState,
   reducers: {
-    setUsers: (state: UsersState[], action: PayloadAction<UsersState[]>) => {
-      state = action.payload;
+    setUsers: (_: UsersState[], action: PayloadAction<UsersState[]>) => {
+      return action.payload;
     },
   },
 });

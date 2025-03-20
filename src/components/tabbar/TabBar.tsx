@@ -1,4 +1,4 @@
-import {BottomTabBarProps} from '@react-navigation/bottom-tabs';
+import type {BottomTabBarProps} from '@react-navigation/bottom-tabs';
 import {useTheme} from '@react-navigation/native';
 import React from 'react';
 import {View} from 'react-native';

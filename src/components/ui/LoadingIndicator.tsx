@@ -5,22 +5,34 @@ import {ActivityIndicator, StyleSheet, View} from 'react-native';
 // Types
 import type {ColorPath, LoadingIndicatorProps} from './types';
 
-const LoadingIndicator = ({color, ...props}: LoadingIndicatorProps) => {
+const LoadingIndicator = ({
+  color,
+  containerStyle,
+  ...props
+}: LoadingIndicatorProps) => {
   const {colors} = useTheme();
 
-  // TODO: Find better way to resolve color
   const resolveColor = useCallback(
     (colorPath: ColorPath): string => {
-      return colorPath.split('.').reduce((acc, current) => {
-        return acc[current as keyof typeof acc];
-      }, colors as any);
+      const parts = colorPath.split('.');
+      let result: any = colors;
+
+      for (const part of parts) {
+        if (result && typeof result === 'object' && part in result) {
+          result = result[part];
+        } else {
+          console.warn(`Invalid color path: ${colorPath}`);
+          return colors.primary;
+        }
+      }
+
+      return typeof result === 'string' ? result : colors.primary;
     },
     [colors],
   );
 
-  // TODO: container style should be passed as prop
   return (
-    <View style={[styles.loading]}>
+    <View style={[styles.loading, containerStyle]}>
       <ActivityIndicator size="large" {...props} color={resolveColor(color)} />
     </View>
   );
