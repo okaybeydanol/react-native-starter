@@ -6,8 +6,8 @@ This React Native Starter Template provides a solid foundation to streamline mob
 
 - **Navigation System**: Built with React Navigation for seamless routing and navigation.
 - **Internationalization**: Includes `react-i18next` for multi-language support, allowing easy localization and translation.
-- **Theming**: Pre-configured dark and light themes with dynamic switching support.
-- **State Management**: Utilizes Redux Toolkit and Redux API Middleware for efficient state and API management.
+- **Theming**: Pre-configured dark and light themes with dynamic switching support using Zustand.
+- **State Management**: Utilizes Zustand for client-side state and Tanstack Query for server-side state and API management.
 - **Reusable Hooks**: Custom hooks to simplify common React Native patterns.
 - **Pre-styled UI Components**: Includes pre-designed UI components with theming support.
 - **Customizable Structure**: Easy to rename and adapt to project-specific needs with provided scripts.
@@ -51,23 +51,25 @@ src/
 │   ├── SplashNavigator.tsx  # Splash screen navigator
 │   ├── TabNavigator.tsx     # Tab navigator
 │   └── types.ts             # Navigation types
+├── query/                   # Query and state management
+│   ├── api/                 # API endpoint definitions
+│   ├── client.ts            # Query client configuration
+│   ├── queries/             # Query hooks for data fetching
+│   └── store/               # State management store
 ├── screens/                 # Application screens
 │   ├── home/                # Home screens
 │   ├── splash/              # Splash screen
 │   └── tab/                 # Tab screens (Home, Profile)
-├── store/                   # Redux store setup
-│   ├── api/                 # API slice setup
-│   ├── slices/              # Redux slices (theme, user, language)
-│   ├── index.ts             # Combines reducers and sets up store
-│   └── types.ts             # Types for Redux and Redux API
 ├── theme/                   # Theming setup
 │   ├── dark.ts              # Dark theme configuration
 │   ├── index.ts             # Theme exports
-│   └── light.ts             # Light theme configuration
+│   ├── light.ts             # Light theme configuration
+│   └── types.ts             # Theme type definitions
 ├── types/                   # Global type definitions
 │   ├── i18next.d.ts         # i18n types
 │   ├── image.d.ts           # Image asset types
-│   └── theme.d.ts           # Theme types
+│   ├── navigation.d.ts      # Navigation types
+│   └── object.ts            # Utility type helpers
 └── utils/                   # Utility functions
     ├── index.ts             # Utility exports
     ├── object.ts            # Object manipulation utilities
