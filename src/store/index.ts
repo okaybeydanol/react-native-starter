@@ -14,7 +14,6 @@ import {
 
 // Reducers
 import themeReducer from './slices/theme';
-import usersReducer from './slices/users';
 import languageReducer from './slices/language';
 
 // Apis
@@ -30,7 +29,6 @@ const rootPersistConfig = {
 // Combine all reducers into a single root reducer
 const rootReducer = combineReducers({
   [usersApi.reducerPath]: usersApi.reducer,
-  users: usersReducer,
   theme: themeReducer,
   language: languageReducer,
 });
