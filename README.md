@@ -144,7 +144,13 @@ Ensure the following tools are installed:
    import android.os.Bundle;
    ```
 
-5. **Start the Development Server**
+5. **Link Project Assets**
+
+   ```bash
+   npx react-native-asset
+   ```
+
+6. **Start the Development Server**
 
    ```bash
    yarn start
