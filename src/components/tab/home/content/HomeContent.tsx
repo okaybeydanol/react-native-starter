@@ -2,8 +2,8 @@ import React, {useCallback} from 'react';
 import {useTheme} from '@react-navigation/native';
 import {FlatList, View} from 'react-native';
 
-// APIs
-import {useGetAllUsersQuery} from '@store/api';
+// Queries
+import {useUsers} from '@query/queries/useUsers';
 
 // Components
 import GenericView from '@components/ui/GenericView';
@@ -12,7 +12,7 @@ import HomeUsersCard from './users-card/HomeUsersCard';
 
 // Types
 import type {HomeContentProps} from './types';
-import type {User} from '@store/api/types';
+import type {User} from '@query/api/types';
 
 // Styles
 import createStyles from './styles';
@@ -20,7 +20,7 @@ import createStyles from './styles';
 const HomeContent = ({}: HomeContentProps) => {
   const {colors} = useTheme();
   const styles = React.useMemo(() => createStyles(colors), [colors]);
-  const {isLoading, isError, isFetching, data} = useGetAllUsersQuery();
+  const {isLoading, isError, isFetching, data} = useUsers();
 
   const renderItem = useCallback(
     ({item}: {item: User}) => <HomeUsersCard user={item} />,

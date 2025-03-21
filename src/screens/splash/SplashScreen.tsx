@@ -7,8 +7,7 @@ import {useTranslation} from 'react-i18next';
 import eterationLogo from '@assets/images/eteration-logo.png';
 
 // Store
-import {useAppDispatch, useAppSelector} from '@store/index';
-import {setLanguage} from '@store/slices/language';
+import {useLanguageStore} from '@query/store';
 
 // Helpers
 import {getSystemLocale} from '@helpers/systemLocale';
@@ -23,36 +22,32 @@ const SplashScreen: React.FC<SplashScreenProps> = ({navigation}) => {
   const {colors} = useTheme();
   const styles = React.useMemo(() => createStyles(colors), [colors]);
   const {i18n} = useTranslation();
-  const language = useAppSelector(state => state.language.language);
-  const dispatch = useAppDispatch();
+  const language = useLanguageStore(state => state.language);
+  const isHydrated = useLanguageStore(state => state._hasHydrated);
+  const setLanguage = useLanguageStore(state => state.setLanguage);
 
   useEffect(() => {
-    let languageCode = 'tr';
-    let locale = 'tr-TR';
-
-    if (language === '') {
-      locale = getSystemLocale();
-      const separator = Platform.OS === 'ios' ? '-' : '_';
-      const localeParts = locale.split(separator);
-      if (localeParts.length > 0 && localeParts[0]) {
-        languageCode = localeParts[0];
+    if (isHydrated) {
+      if (language === '') {
+        let languageCode = 'tr';
+        let locale = getSystemLocale();
+        const separator = Platform.OS === 'ios' ? '-' : '_';
+        const localeParts = locale.split(separator);
+        if (localeParts.length > 0 && localeParts[0]) {
+          languageCode = localeParts[0];
+        }
+        setLanguage(languageCode);
+      } else {
+        i18n.changeLanguage(language);
       }
-      dispatch(
-        setLanguage({
-          language: languageCode,
-        }),
-      );
-      i18n.changeLanguage(languageCode);
-    } else {
-      i18n.changeLanguage(language);
+
+      const timer = setTimeout(() => {
+        navigation.replace('TabNavigator', {screen: 'HomeScreen'});
+      }, 1000);
+
+      return () => clearTimeout(timer);
     }
-
-    const timer = setTimeout(() => {
-      navigation.replace('TabNavigator', {screen: 'HomeScreen'});
-    }, 1000);
-
-    return () => clearTimeout(timer);
-  }, [navigation]);
+  }, [isHydrated]);
 
   return (
     <>

@@ -7,8 +7,7 @@ import {useTranslation} from 'react-i18next';
 import SingleSelection from '@components/home/settings/SingleSelection';
 
 // Store
-import {useAppDispatch, useAppSelector} from '@store/index';
-import {setTheme} from '@store/slices/theme';
+import {useThemeStore} from '@query/store';
 
 // Types
 import type {SettingsThemeContent} from './types';
@@ -20,11 +19,10 @@ const ThemeContent = ({navigation}: SettingsThemeContent) => {
   const {colors} = useTheme();
   const styles = React.useMemo(() => createStyles(colors), [colors]);
   const {t} = useTranslation('home');
-  const mode = useAppSelector(state => state.theme.mode);
-  const dispatch = useAppDispatch();
+  const {mode, setTheme} = useThemeStore();
 
   const handleTheme = (themeMode: 'dark' | 'light' | 'system') => {
-    dispatch(setTheme({mode: themeMode}));
+    setTheme(themeMode);
     navigation.goBack();
   };
 

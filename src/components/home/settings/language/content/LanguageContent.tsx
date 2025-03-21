@@ -7,8 +7,7 @@ import {useTheme} from '@react-navigation/native';
 import SingleSelection from '@components/home/settings/SingleSelection';
 
 // Store
-import {useAppDispatch} from '@store/index';
-import {setLanguage} from '@store/slices/language';
+import {useLanguageStore} from '@query/store';
 
 //Types
 import type {SettingsLanguageContentProps} from './types';
@@ -20,11 +19,11 @@ const LanguageContent = ({navigation}: SettingsLanguageContentProps) => {
   const {colors} = useTheme();
   const styles = React.useMemo(() => createStyles(colors), [colors]);
   const {t, i18n} = useTranslation('home');
-  const dispatch = useAppDispatch();
+  const {setLanguage} = useLanguageStore();
 
   const handleSelectLanguage = (lang: 'tr' | 'en') => {
     i18n.changeLanguage(lang);
-    dispatch(setLanguage({language: lang}));
+    setLanguage(lang);
     navigation.goBack();
   };
 

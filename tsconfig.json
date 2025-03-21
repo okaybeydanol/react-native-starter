@@ -11,7 +11,7 @@
       "@hooks/*": ["hooks/*"],
       "@i18n/*": ["i18n/*"],
       "@navigation/*": ["navigation/*"],
-      "@store/*": ["store/*"],
+      "@query/*": ["query/*"],
       "@screens/*": ["screens/*"],
       "@theme/*": ["theme/*"],
       "@utils/*": ["utils/*"],
