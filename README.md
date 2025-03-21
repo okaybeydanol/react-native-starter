@@ -57,16 +57,19 @@ src/
 │   └── tab/                 # Tab screens (Home, Profile)
 ├── store/                   # Redux store setup
 │   ├── api/                 # API slice setup
-│   ├── slices/              # Redux slices (theme, user, language)
+│   ├── slices/              # Redux slices (theme, language)
 │   ├── index.ts             # Combines reducers and sets up store
 │   └── types.ts             # Types for Redux and Redux API
 ├── theme/                   # Theming setup
 │   ├── dark.ts              # Dark theme configuration
 │   ├── index.ts             # Theme exports
-│   └── light.ts             # Light theme configuration
+│   ├── light.ts             # Light theme configuration
+│   └── types.ts             # Theme type definitions
 ├── types/                   # Global type definitions
 │   ├── i18next.d.ts         # i18n types
 │   ├── image.d.ts           # Image asset types
+│   ├── navigation.d.ts      # Navigation type extensions
+│   ├── object.ts            # Object type utilities
 │   └── theme.d.ts           # Theme types
 └── utils/                   # Utility functions
     ├── index.ts             # Utility exports
