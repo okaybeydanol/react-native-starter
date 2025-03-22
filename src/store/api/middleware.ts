@@ -16,6 +16,10 @@ export const baseQueryAcceptJson = fetchBaseQuery({
   },
 });
 
+// ==================================================
+// EXAMPLE REFRESH TOKEN IMPLEMENTATION FOR RTK QUERY
+// ==================================================
+
 const baseQueryToken = fetchBaseQuery({
   baseUrl,
   prepareHeaders: (headers, {getState}) => {
