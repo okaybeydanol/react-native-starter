@@ -18,63 +18,69 @@ Here’s an overview of the project structure:
 
 ```markdown
 src/
-├── App.tsx                     # Root React component with Redux Provider and navigation
-├── assets/                     # Static assets used throughout the application
-│   ├── fonts/                  # Custom font files for typography
-│   └── images/                 # Image resources like logos and icons
-├── components/                 # Reusable UI components organized by feature
-│   ├── settings/               # Components related to settings screens
-│   ├── svgs/                   # SVG icon components
-│   ├── tab/                    # Tab screen-specific components
-│   ├── tabbar/                 # Custom TabBar navigation component
-│   └── ui/                     # Generic UI components (GlobalHeader, etc.)
-├── constants/                  # Application-wide constants
-│   ├── dimensions.ts           # Device dimension values and calculations
-│   ├── localization.ts         # Localization-related constants
-│   ├── navigationConfig.ts     # Navigation configuration options
-│   ├── regex.ts                # Regular expression patterns for validation
-│   └── urls.ts                 # API endpoints and resource URLs
-├── helpers/                    # Helper functions and utilities
-│   ├── getSvg.tsx              # SVG component helper functions
-│   ├── systemLocale.ts         # System locale detection helper
-│   └── types.ts                # Type definitions for helper functions
-├── hooks/                      # Custom React hooks
-│   ├── useAppTheme.ts          # Hook for accessing and switching app themes
-│   └── useHomeUsers.tsx        # Hook for fetching and managing user data
-├── i18n/                       # Internationalization setup and translations
-│   ├── i18n.ts                 # i18n configuration and initialization
-│   └── locales/                # Translation files organized by language
-├── navigation/                 # Navigation setup and configuration
-│   ├── AppNavigator.tsx        # Root navigator with theme setup
-│   ├── HomeNavigator.tsx       # Home screen stack navigator
-│   ├── MainNavigator.tsx       # Main app navigator that controls flow
-│   ├── SplashNavigator.tsx     # Splash screen navigator
-│   ├── TabNavigator.tsx        # Bottom tab navigator configuration
-│   └── types.ts                # Navigation type definitions and parameters
-├── screens/                    # Application screens organized by feature
-│   ├── settings/               # Settings-related screens
-│   ├── splash/                 # Splash/launch screen
-│   └── tab/                    # Tab-based main screens
-├── store/                      # Redux store setup and state management
-│   ├── api/                    # RTK Query API definitions
-│   ├── slices/                 # Redux Toolkit slices for state management
-│   ├── rootReducer.ts          # Combines all reducers
-│   ├── store.ts                # Store configuration with persist setup
-│   └── types.ts                # Type definitions for store state
-├── theme/                      # Theming setup and definitions
-│   ├── dark.ts                 # Dark theme color palette and settings
-│   ├── light.ts                # Light theme color palette and settings
-│   └── types.ts                # Theme type definitions
-├── types/                      # Global type definitions
-│   ├── env.d.ts                # Environment variables type definitions
-│   ├── i18next.d.ts            # Type extensions for i18next
-│   ├── image.d.ts              # Image module declarations for assets
-│   ├── navigation.d.ts         # Navigation type extensions
-│   └── theme.d.ts              # Theme type extensions
-└── utils/                      # Utility functions
-    ├── object.ts               # Object manipulation and nested path handling utilities
-    ├── string.ts               # String manipulation and localization utilities
-    └── types.ts                # Type definitions for utility functions
+├── App.tsx                         # Root React component with Redux Provider and navigation
+├── assets/                         # Static assets used throughout the application
+│   ├── fonts/                      # Custom font files for typography
+│   └── images/                     # Image resources like logos and icons
+├── core/                           # Core functionality and utilities
+│   ├── components/                 # Reusable UI components organized by feature
+│   │   ├── svgs/                   # SVG icon components
+│   │   ├── tabbar/                 # Custom TabBar navigation component
+│   │   └── ui/                     # Generic UI components (GlobalHeader, etc.)
+│   ├── constants/                  # Application-wide constants
+│   │   ├── dimensions.ts           # Device dimension values and calculations
+│   │   ├── localization.ts         # Localization-related constants
+│   │   ├── navigationConfig.ts     # Navigation configuration options
+│   │   ├── regex.ts                # Regular expression patterns for validation
+│   │   └── urls.ts                 # API endpoints and resource URLs
+│   ├── helpers/                    # Helper functions and utilities
+│   │   ├── globalSvg.tsx           # Global SVG helper functions
+│   │   ├── systemLocale.ts         # System locale detection helper
+│   │   └── types.ts                # Type definitions for helper functions
+│   ├── hooks/                      # Custom React hooks
+│   │   └── useAppTheme.ts          # Hook for accessing and switching app themes
+│   ├── i18n/                       # Internationalization setup and translations
+│   │   ├── i18n.ts                 # i18n configuration and initialization
+│   │   └── locales/                # Translation files organized by language
+│   ├── navigation/                 # Navigation setup
+│   │   ├── AppNavigator.tsx        # Root navigator with theme setup
+│   │   ├── HomeNavigator.tsx       # Home screen stack navigator
+│   │   ├── MainNavigator.tsx       # Main app navigator that controls flow
+│   │   ├── SplashNavigator.tsx     # Splash screen navigator
+│   │   ├── TabNavigator.tsx        # Bottom tab navigator configuration
+│   │   └── types.ts                # Navigation type definitions and parameter
+│   ├── store/                      # Redux store setup
+│   │   ├── api/                    # RTK Query API definitions
+│   │   ├── rootReducer.ts          # Combines all reducers
+│   │   └── store.ts                # Store configuration with persist setup
+│   ├── theme/                      # Theming setup and definitions
+│   │   ├── dark.ts                 # Dark theme color palette and settings
+│   │   ├── light.ts                # Light theme color palette and settings
+│   │   └── types.ts                # Theme type definitions
+│   │── types/                      # Global type definitions
+│   │   ├── env.d.ts                # Environment variables type definitions
+│   │   ├── i18next.d.ts            # Type extensions for i18next
+│   │   ├── image.d.ts              # Image module declarations for assets
+│   │   ├── navigation.d.ts         # Navigation type extensions
+│   │   └── theme.d.ts              # Theme type extensions
+│   ├── utils/                      # Utility functions
+│   │   ├── object.ts               # Object manipulation and nested path handling utilities
+│   │   ├── string.ts               # String manipulation and localization utilities
+│   │   └── types.ts                # Type definitions for utility functions
+└── features/                       # Application features
+    ├── home/                       # Home feature
+    │   ├── api/                    # Home API services and types
+    │   ├── components/             # Home-specific components
+    │   ├── constants/              # Home-specific constants
+    │   ├── hooks/                  # Home-specific hooks
+    │   └── screens/                # Home screens
+    ├── profile/                    # Profile feature
+    │   └── screens/                # Profile screens
+    ├── settings/                   # Settings feature
+    │   ├── components/             # Settings-specific components
+    │   └── screens/                # Settings screens (language, theme, etc.)
+    └── splash/                     # Splash screen feature
+        └── screens/                # Splash screen components
 ```
 
 ---
@@ -116,24 +122,11 @@ Ensure the following tools are installed:
    1. Update the project name in `package.json`
    2. Update the project name in `app.json`
 
-4. **Project Setup Options**
-   Choose one of the following options:
-
-   **Option 1: Clean Project** - Remove example content while keeping infrastructure
-
-   ```bash
-   yarn clean
-   ```
-
-   This removes all example content from the template but keeps the basic infrastructure.
-
-   **Option 2: Rename Project** - Keep example content but change app name
+4. **Rename Project** - Keep example content but change app name
 
    ```bash
    yarn rename
    ```
-
-   This keeps all example content but changes the application name in all necessary files.
 
 5. **Android Configuration for react-native-screens**
    The `react-native-screens` package requires additional configuration on Android to work properly. Edit the `MainActivity.kt` file located under `android/app/src/main/java/<your package name>/`.
@@ -262,12 +255,6 @@ This documentation covers all available commands in your React Native project. T
 
   ```bash
   rm -rf ios android .git && npx react-native eject && yarn purge
-  ```
-
-- **`clean`** Placeholder for custom cleaning operation.
-
-  ```bash
-  node scripts/clean.js && yarn rename
   ```
 
 ## Cache & Dependencies Management
