@@ -3,22 +3,19 @@ import React from 'react';
 import {StyleSheet} from 'react-native';
 
 // Third-Party Libraries
+import {QueryClientProvider} from '@tanstack/react-query';
 import {GestureHandlerRootView} from 'react-native-gesture-handler';
-import {Provider} from 'react-redux';
-import {PersistGate} from 'redux-persist/integration/react';
 
 // Internal Imports (Absolute)
 import AppNavigator from '@navigation/AppNavigator';
-import {persistor, store} from '@store/store';
+import {queryClient} from '@query/client';
 
 const App = (): React.JSX.Element => {
   return (
     <GestureHandlerRootView style={styles.container} testID="app-root">
-      <Provider store={store}>
-        <PersistGate loading={null} persistor={persistor}>
-          <AppNavigator />
-        </PersistGate>
-      </Provider>
+      <QueryClientProvider client={queryClient}>
+        <AppNavigator />
+      </QueryClientProvider>
     </GestureHandlerRootView>
   );
 };

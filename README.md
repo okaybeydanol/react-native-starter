@@ -6,8 +6,8 @@ This React Native Starter Template provides a solid foundation to streamline mob
 
 - **Navigation System**: Built with React Navigation for seamless routing and navigation.
 - **Internationalization**: Includes `react-i18next` for multi-language support, allowing easy localization and translation.
-- **Theming**: Pre-configured dark and light themes with dynamic switching support.
-- **State Management**: Utilizes Redux Toolkit and Redux API Middleware for efficient state and API management.
+- **Theming**: Pre-configured dark and light themes with dynamic switching support using Zustand.
+- **State Management**: Utilizes Zustand for client-side state and Tanstack Query for server-side state and API management.
 - **Customizable Structure**: Easy to rename and adapt to project-specific needs with provided scripts.
 
 ---
@@ -51,16 +51,15 @@ src/
 │   ├── SplashNavigator.tsx     # Splash screen navigator
 │   ├── TabNavigator.tsx        # Bottom tab navigator configuration
 │   └── types.ts                # Navigation type definitions and parameters
+├── query/                      # Query and state management
+│   ├── api/                    # API endpoint definitions
+│   ├── client.ts               # Query client configuration
+│   ├── queries/                # Query hooks for data fetching
+│   └── store/                  # State management store
 ├── screens/                    # Application screens organized by feature
 │   ├── settings/               # Settings-related screens
 │   ├── splash/                 # Splash/launch screen
 │   └── tab/                    # Tab-based main screens
-├── store/                      # Redux store setup and state management
-│   ├── api/                    # RTK Query API definitions
-│   ├── slices/                 # Redux Toolkit slices for state management
-│   ├── rootReducer.ts          # Combines all reducers
-│   ├── store.ts                # Store configuration with persist setup
-│   └── types.ts                # Type definitions for store state
 ├── theme/                      # Theming setup and definitions
 │   ├── dark.ts                 # Dark theme color palette and settings
 │   ├── light.ts                # Light theme color palette and settings

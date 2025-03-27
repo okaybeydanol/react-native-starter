@@ -3,11 +3,11 @@ import React, {useCallback} from 'react';
 
 // Internal Imports (Absolute)
 import HomeUsersCard from '@components/tab/home/users-card/HomeUsersCard';
-import {useGetAllUsersQuery} from '@store/api/homeApi';
-import type {User} from '@store/api/types';
+import type {User} from '@query/api/types';
+import {useUsers} from '@query/queries/useUsers';
 
 const useHomeUsers = () => {
-  const {isLoading, isError, isFetching, data} = useGetAllUsersQuery();
+  const {isLoading, isError, isFetching, data} = useUsers();
 
   const renderItem = useCallback(({item}: {item: User}) => {
     return <HomeUsersCard user={item} />;
