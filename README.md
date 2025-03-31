@@ -117,18 +117,35 @@ Ensure the following tools are installed:
    yarn install
    ```
 
-3. **Configure Project Name**
+3. **Select Project Architecture Branch**
+
+   Choose one of the following project architecture branches based on your requirements:
+
+   ```bash
+   # For component-based architecture with Redux Toolkit and RTK Query
+   git checkout component-based-redux-toolkit-rtk-query
+   
+   # For feature-based architecture with Redux Toolkit and RTK Query
+   git checkout feature-based-redux-toolkit-rtk-query
+   
+   # For component-based architecture with Zustand and TanStack Query
+   git checkout component-based-zustand-tanstack-query
+   ```
+
+4. **Configure Project Name**
 
    1. Update the project name in `package.json`
    2. Update the project name in `app.json`
 
-4. **Rename Project** - Keep example content but change app name
+5. **Rename Project** - Keep example content but change app name
 
    ```bash
    yarn rename
    ```
 
-5. **Android Configuration for react-native-screens**
+   This keeps all example content but changes the application name in all necessary files.
+
+6. **Android Configuration for react-native-screens**
    The `react-native-screens` package requires additional configuration on Android to work properly. Edit the `MainActivity.kt` file located under `android/app/src/main/java/<your package name>/`.
 
    Add the following code to the body of the `MainActivity` class:
@@ -149,10 +166,10 @@ Ensure the following tools are installed:
    import android.os.Bundle;
    ```
 
-6. **Start the Development Server**
+7. **Start the Development Server**
 
    ```bash
-   yarn start
+   yarn start --reset-cache
    ```
 
 ---
