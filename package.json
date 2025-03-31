@@ -15,14 +15,14 @@
     "format:imports": "node scripts/sort-imports.js $1",
     "format": "yarn format:eslint $1 && yarn format:prettier $1 && yarn format:imports $1",
     "precommit": "yarn format && yarn validate",
-    "rename": "rm -rf ios android .git && npx react-native eject && yarn purge",
+    "rename": "rm -rf ios android .git && npx react-native eject && yarn purge && git init && git add . && git commit -m 'Initial commit'",
     "clean": "node scripts/clean.js && yarn rename",
     "purge:js": "rm -rf node_modules package-lock.json yarn.lock && npm cache clean --force && yarn cache clean && rm -rf $TMPDIR/metro-* $TMPDIR/haste-* ~/Library/Caches/Yarn",
     "purge:android": "(cd android && ./gradlew --stop) && rm -rf ~/.gradle/caches/ ~/.gradle/daemon ~/.gradle/native ~/.gradle/wrapper android/app/build",
     "purge:ios": "rm -rf ios/Pods/* ios/Podfile.lock ios/build ~/Library/Caches/CocoaPods ~/Library/Developer/Xcode/DerivedData ~/Library/Developer/CoreSimulator/Caches && pod cache clean --all",
     "purge:gem": "rm -rf Gemfile.lock vendor/* ~/.gem && gem cleanup",
     "purge:install": "yarn install && cd ios && bundle install && bundle exec pod install",
-    "purge": "yarn purge:js && yarn purge:android && yarn purge:ios && yarn purge:gem && yarn purge:install && yarn start --reset-cache"
+    "purge": "yarn purge:js && yarn purge:android && yarn purge:ios && yarn purge:gem && yarn purge:install"
   },
   "dependencies": {
     "@react-native-async-storage/async-storage": "^2.1.2",

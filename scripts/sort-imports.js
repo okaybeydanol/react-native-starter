@@ -3,10 +3,29 @@ const path = require('path');
 
 console.log('Import Sorter is starting...');
 
+function cleanPreviousHeaders(content) {
+  const headerPatterns = [
+    /\/\/ React & React Native\n/g,
+    /\/\/ Third-Party Libraries\n/g,
+    /\/\/ Internal Imports \(Absolute\)\n/g,
+    /\/\/ Parent Directory Imports \(Relative\)\n/g,
+    /\/\/ Sibling Directory Imports \(Relative\)\n/g,
+    /\/\/ Index Imports\n/g,
+  ];
+
+  let cleanedContent = content;
+  for (const pattern of headerPatterns) {
+    cleanedContent = cleanedContent.replace(pattern, '');
+  }
+
+  return cleanedContent;
+}
+
 function sortImports(filePath) {
   try {
     const content = fs.readFileSync(filePath, 'utf-8');
-    const lines = content.split('\n');
+    const cleanedContent = cleanPreviousHeaders(content);
+    const lines = cleanedContent.split('\n');
 
     const importLines = [];
     const codeLines = [];
