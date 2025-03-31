@@ -96,7 +96,8 @@ Follow these steps to get the project running on your local machine.
 Ensure the following tools are installed:
 
 - Node.js (latest LTS version recommended)
-- Yarn (preferred package manager)
+- **Yarn (required package manager)** - All scripts are built around Yarn and will not work properly with npm
+- **ESLint and Prettier plugins for your code editor (required)** - React Native has critical dependencies on these tools for code quality and formatting
 - Xcode (for iOS development)
 - Android Studio (for Android development)
 
@@ -132,7 +133,19 @@ Ensure the following tools are installed:
    git checkout component-based-zustand-tanstack-query
    ```
 
-4. **Configure Project Name**
+4. **Configure Git User Information**
+
+   Before proceeding with the rename script, ensure your Git user information is configured correctly. This is especially important if you're using different Git credentials for different repositories or if Git user information isn't configured globally.
+
+   ```bash
+   # Configure Git user for this repository (optional but recommended)
+   git config user.name "Your Name"
+   git config user.email "your.email@example.com"
+   ```
+
+   **Note:** If you skip this step and don't have Git user information configured globally, the rename script may fail during the commit process.
+
+5. **Configure Project Name**
 
    1. Update the project name in `package.json`
    2. Update the project name in `app.json`
@@ -143,9 +156,9 @@ Ensure the following tools are installed:
    yarn rename
    ```
 
-   This keeps all example content but changes the application name in all necessary files.
+   This keeps all example content but changes the application name in all necessary files, including proper navigation structure.
 
-6. **Android Configuration for react-native-screens**
+7. **Android Configuration for react-native-screens**
    The `react-native-screens` package requires additional configuration on Android to work properly. Edit the `MainActivity.kt` file located under `android/app/src/main/java/<your package name>/`.
 
    Add the following code to the body of the `MainActivity` class:
@@ -166,11 +179,84 @@ Ensure the following tools are installed:
    import android.os.Bundle;
    ```
 
-7. **Start the Development Server**
+8. **Start the Development Server**
 
    ```bash
    yarn start --reset-cache
    ```
+
+---
+
+## Import Ordering and Automation
+
+ESLint and Prettier configurations can automatically sort imports, but special categorization like `sibling` and `absolute` requires additional setup. To maintain readable and well-organized imports following company standards, this project uses both ESLint and a custom script. While ESLint handles basic sorting on auto-save, the custom script provides more control with category headers.
+
+**How It Works:** These configurations ensure proper import resolution:
+
+* TypeScript path aliases (`@app`, `@components`, etc.) are resolved through `tsconfig.json` if present, but the script works independently if needed
+* Supported file extensions (`.ts`, `.tsx`, `.js`, `.jsx`) are specified
+* `settings.import/resolver`: Ensures proper resolution of absolute paths
+   * **Note:** `typescript.project` setting should align with `paths` in `tsconfig.json`
+
+**Example (Before and After):**
+
+**Before (Projects without ESLint/Prettier):**
+
+```javascript
+import {AppRegistry} from 'react-native';
+import App from '@app';
+import '@i18n/i18n';
+import {name as appName} from './app.json';
+
+AppRegistry.registerComponent(appName, () => App);
+```
+
+**Before (Projects with ESLint/Prettier):**
+
+```javascript
+import {AppRegistry} from 'react-native';
+
+import App from '@app';
+import '@i18n/i18n';
+
+import {name as appName} from './app.json';
+
+AppRegistry.registerComponent(appName, () => App);
+```
+
+**After (With Script):**
+
+```javascript
+// React & React Native
+import {AppRegistry} from 'react-native';
+
+// Internal Imports (Absolute)
+import App from '@app';
+import '@i18n/i18n';
+
+// Sibling Directory Imports (Relative)
+import {name as appName} from './app.json';
+
+AppRegistry.registerComponent(appName, () => App);
+```
+
+**Script Usage:** The project includes a `scripts/sort-imports.js` file to automatically sort imports. This script is ideal for those not using ESLint or wanting to add standard headers. It works across all three templates (regardless of file/folder structure) and runs via Node.
+
+**Regex:** For absolute imports: `/^@(app|components|constants|hooks|i18n|navigation|store|query|theme|types|utils|features|helpers|assets)(?:\/|$)/i` - This identifies and sorts aliases like `@app`, `@components`, etc.
+
+**Package.json Script:**
+
+```json
+"scripts": {
+  "format:imports": "node scripts/sort-imports.js $1"
+}
+```
+
+**Usage Examples:** **You can use it as both node and script.**
+* Single file: `node scripts/sort-imports.js index.js`
+* Folder (specific): `node scripts/sort-imports.js src/component/profile` (scans all files)
+* Single file (specific): `yarn format:imports src/component/profile/ProfileContent.tsx`
+* Folder (general): `yarn format:imports src/` (scans all files)
 
 ---
 
@@ -271,7 +357,7 @@ This documentation covers all available commands in your React Native project. T
 - **`rename`** Regenerates native project files and purges caches.
 
   ```bash
-  rm -rf ios android .git && npx react-native eject && yarn purge
+  rm -rf ios android .git && npx react-native eject && yarn purge && git init && git add . && git commit -m 'Initial commit'
   ```
 
 ## Cache & Dependencies Management
