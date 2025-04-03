@@ -318,7 +318,19 @@ This documentation covers all available commands in your React Native project. T
   eslint $1 --fix
   ```
 
-  **IMPORTANT**: Requires a path parameter.
+  **IMPORTANT**: The `$1` parameter represents the file or directory path you want to format. Replace it with an actual path when running the command.
+  
+  **Examples**:
+  ```bash
+  # Format a specific file
+  yarn format:eslint src/components/Button.tsx
+  
+  # Format a directory
+  yarn format:eslint src/screens
+  
+  # Format the entire src directory
+  yarn format:eslint src
+  ```
 
 - **`format:prettier`** Formats code using Prettier.
 
@@ -326,7 +338,16 @@ This documentation covers all available commands in your React Native project. T
   prettier --write "$1/**/*.{js,jsx,ts,tsx,json}"
   ```
 
-  **IMPORTANT**: Requires a path parameter.
+  **IMPORTANT**: The `$1` parameter represents the directory path you want to format. Replace it with an actual directory path when running the command.
+  
+  **Examples**:
+  ```bash
+  # Format a specific directory
+  yarn format:prettier src/components
+  
+  # Format the entire src directory
+  yarn format:prettier src
+  ```
 
 - **`format:imports`** Sorts import statements using a custom script.
 
@@ -334,7 +355,19 @@ This documentation covers all available commands in your React Native project. T
   node scripts/sort-imports.js $1
   ```
 
-  **IMPORTANT**: Requires a path parameter.
+  **IMPORTANT**: The `$1` parameter represents the file or directory path you want to process. Replace it with an actual path when running the command.
+  
+  **Examples**:
+  ```bash
+  # Sort imports in a specific file
+  yarn format:imports src/components/Button.tsx
+  
+  # Sort imports in a directory
+  yarn format:imports src/screens
+  
+  # Sort imports in the entire src directory
+  yarn format:imports src
+  ```
 
 - **`format`** Runs all formatting commands in sequence.
 
@@ -342,7 +375,16 @@ This documentation covers all available commands in your React Native project. T
   yarn format:eslint $1 && yarn format:prettier $1 && yarn format:imports $1
   ```
 
-  **IMPORTANT**: Requires a path parameter.
+  **IMPORTANT**: The `$1` parameter represents the file or directory path you want to format. Replace it with an actual path when running the command. This script will run all formatting operations on the specified path.
+  
+  **Examples**:
+  ```bash
+  # Format a specific directory with all formatters
+  yarn format src/components
+  
+  # Format the entire src directory with all formatters
+  yarn format src
+  ```
 
 ## Git Workflow
 
