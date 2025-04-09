@@ -1,0 +1,30 @@
+// React & React Native
+import React from 'react';
+import {SafeAreaView} from 'react-native';
+
+// Third-Party Libraries
+import {useTheme} from '@react-navigation/native';
+import {useTranslation} from 'react-i18next';
+
+// Internal Imports (Absolute)
+import GlobalHeader from '@components/ui/GlobalHeader';
+import SettingsContent from '@features/settings/components/content/SettingsContent';
+
+// Sibling Directory Imports (Relative)
+import createStyles from './styles';
+import type {SettingScreenProps} from './types';
+
+const SettingsScreen = ({navigation, route}: SettingScreenProps) => {
+  const {colors} = useTheme();
+  const styles = React.useMemo(() => createStyles(colors), [colors]);
+  const {t} = useTranslation('home');
+
+  return (
+    <SafeAreaView style={styles.container}>
+      <GlobalHeader title={t('settings')} />
+      <SettingsContent navigation={navigation} route={route} />
+    </SafeAreaView>
+  );
+};
+
+export default SettingsScreen;

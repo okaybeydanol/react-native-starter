@@ -62,7 +62,6 @@ function runCommand(command) {
   }
 }
 
-
 /**
  * Show usage information and exit
  */
