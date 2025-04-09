@@ -1,3 +1,42 @@
 {
-  "extends": "@react-native/typescript-config/tsconfig.json"
+  "extends": "@react-native/typescript-config/tsconfig.json",
+  "compilerOptions": {
+    "baseUrl": "./src",
+    "paths": {
+      "@__tests__/*": ["../__tests__/*"],
+      "@assets/*": ["assets/*"],
+      "@components/*": ["components/*"],
+      "@constants/*": ["constants/*"],
+      "@helpers/*": ["helpers/*"],
+      "@hooks/*": ["hooks/*"],
+      "@i18n/*": ["i18n/*"],
+      "@navigation/*": ["navigation/*"],
+      "@screens/*": ["screens/*"],
+      "@store/*": ["store/*"],
+      "@theme/*": ["theme/*"],
+      "@types/*": ["types/*"],
+      "@utils/*": ["utils/*"],
+      "@app": ["App.tsx"],
+      "@env": ["../node_modules/react-native-dotenv"]
+    }
+  },
+  "include": [
+    "src/**/*",
+    "index.js",
+    "**/*.d.ts",
+    "**/*.test.ts",
+    "**/*.test.tsx"
+  ],
+  "exclude": [
+    ".bundle",
+    "android",
+    "ios",
+    "node_modules",
+    "vendor",
+    "babel.config.js",
+    "jest.config.js",
+    "metro.config.js",
+    "coverage",
+    "tsconfig.json"
+  ]
 }
