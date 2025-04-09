@@ -7,8 +7,8 @@ This React Native Starter Template provides a solid foundation for mobile app de
 - **Navigation System**: Built with [React Navigation](https://reactnavigation.org/) for seamless routing and navigation - nested stack and tab navigations with fully configured navigation types.
 - **Internationalization**: [react-i18next](https://react.i18next.com/) integration offering easy localization and instant language switching.
 - **Theme Support**: Pre-configured dark and light themes with system preference integration and dynamic theme switching.
-- **State Management**: [Redux Toolkit](https://redux-toolkit.js.org/) and [RTK Query](https://redux-toolkit.js.org/rtk-query/overview) for efficient state and API management - ready-to-use API hooks.
-- **Type Safety**: Full type safety with TypeScript - comprehensive type definitions for navigations, API responses, and Redux state.
+- **State Management**: [Zustand](https://github.com/pmndrs/zustand) and [TanStack Query](https://tanstack.com/query/latest) for efficient state and API management - lightweight state management with powerful data fetching capabilities.
+- **Type Safety**: Full type safety with TypeScript - comprehensive type definitions for navigations, API responses, and state stores.
 - **Code Quality Tools**: Code quality checks and formatting with [ESLint](https://eslint.org/), [Prettier](https://prettier.io/), and TypeScript.
 - **Project Structure**: Well-organized, component-based project structure for easier maintenance and development.
 - **Powerful Scripts**: Various helper scripts to accelerate development process, code cleanliness, and organization.
@@ -23,7 +23,7 @@ Here's an overview of the project structure:
 
 ```markdown
 src/
-├── App.tsx                     # Main React component (with Redux Provider and navigation)
+├── App.tsx                     # Main React component (with TanStack Provider and navigation)
 ├── assets/                     # Static assets used throughout the app
 │   ├── fonts/                  # Custom font files for typography
 │   └── images/                 # Visual resources like logos and icons
@@ -56,17 +56,16 @@ src/
 │   ├── SplashNavigator.tsx     # Splash screen navigator
 │   ├── TabNavigator.tsx        # Bottom tab navigator configuration
 │   └── types.ts                # Navigation type definitions and parameters
-├── screens/                    # App screens organized by feature
+├── query/                      # Query and state management
+│   ├── api/                    # API endpoint definitions
+│   ├── client.ts               # Query client configuration
+│   ├── queries/                # Query hooks for data fetching
+│   └── store/                  # State management store
+├── screens/                    # Application screens organized by feature
 │   ├── settings/               # Settings-related screens
 │   ├── splash/                 # Splash/startup screen
 │   └── tab/                    # Tab-based main screens
-├── store/                      # Redux store setup and state management
-│   ├── api/                    # RTK Query API definitions
-│   ├── slices/                 # Redux Toolkit slices for state management
-│   ├── rootReducer.ts          # Combines all reducers
-│   ├── store.ts                # Store configuration with persist setup
-│   └── types.ts                # Type definitions for store state
-├── theme/                      # Theme setup and definitions
+├── theme/                      # Theming setup and definitions
 │   ├── dark.ts                 # Dark theme color palette and settings
 │   ├── light.ts                # Light theme color palette and settings
 │   └── types.ts                # Theme type definitions

@@ -2,12 +2,12 @@
 import {useColorScheme} from 'react-native';
 
 // Internal Imports (Absolute)
-import {useAppSelector} from '@store/store';
+import {useThemeStore} from '@query/store/slices/themeSlice';
 import {darkTheme} from '@theme/dark';
 import {lightTheme} from '@theme/light';
 
 const useAppTheme = () => {
-  const themePreference = useAppSelector(state => state.theme.mode);
+  const themePreference = useThemeStore(state => state.mode);
   const systemColorScheme = useColorScheme() ?? 'dark';
 
   const themes = {light: lightTheme, dark: darkTheme};

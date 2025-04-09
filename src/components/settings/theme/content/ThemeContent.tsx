@@ -8,8 +8,7 @@ import {useTranslation} from 'react-i18next';
 
 // Internal Imports (Absolute)
 import SingleSelection from '@components/settings/SingleSelection';
-import {setTheme} from '@store/slices/themeSlice';
-import {useAppDispatch, useAppSelector} from '@store/store';
+import {useThemeStore} from '@query/store/slices/themeSlice';
 
 // Sibling Directory Imports (Relative)
 import createStyles from './styles';
@@ -19,11 +18,10 @@ const ThemeContent = ({navigation}: SettingsThemeContent) => {
   const {colors} = useTheme();
   const styles = React.useMemo(() => createStyles(colors), [colors]);
   const {t} = useTranslation('home');
-  const mode = useAppSelector(state => state.theme.mode);
-  const dispatch = useAppDispatch();
+  const {setTheme, mode} = useThemeStore(state => state);
 
   const handleTheme = (themeMode: 'dark' | 'light' | 'system') => {
-    dispatch(setTheme({mode: themeMode}));
+    setTheme(themeMode);
     navigation.goBack();
   };
 

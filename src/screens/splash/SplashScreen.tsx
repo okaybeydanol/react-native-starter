@@ -9,8 +9,7 @@ import {useTranslation} from 'react-i18next';
 // Internal Imports (Absolute)
 import eterationLogo from '@assets/images/eteration-logo.png';
 import {getSystemLocale} from '@helpers/systemLocale';
-import {setLanguage} from '@store/slices/languageSlice';
-import {useAppDispatch, useAppSelector} from '@store/store';
+import {useLanguageStore} from '@query/store/slices/languageSlice';
 
 // Sibling Directory Imports (Relative)
 import createStyles from './styles';
@@ -20,29 +19,26 @@ const SplashScreen = ({navigation}: SplashScreenProps) => {
   const {colors} = useTheme();
   const styles = React.useMemo(() => createStyles(colors), [colors]);
   const {i18n} = useTranslation();
-  const language = useAppSelector(state => state.language.language);
-  const dispatch = useAppDispatch();
+  const {setLanguage, language, _hasHydrated} = useLanguageStore();
 
   useEffect(() => {
-    const languageCode = getSystemLocale();
+    if (_hasHydrated) {
+      const languageCode = getSystemLocale();
 
-    if (language === '') {
-      dispatch(
-        setLanguage({
-          language: languageCode,
-        }),
-      );
-      i18n.changeLanguage(languageCode);
-    } else {
-      i18n.changeLanguage(language);
+      if (language === '') {
+        setLanguage(languageCode);
+        i18n.changeLanguage(languageCode);
+      } else {
+        i18n.changeLanguage(language);
+      }
+
+      const timer = setTimeout(() => {
+        navigation.replace('TabNavigator', {screen: 'HomeScreen'});
+      }, 1000);
+
+      return () => clearTimeout(timer);
     }
-
-    const timer = setTimeout(() => {
-      navigation.replace('TabNavigator', {screen: 'HomeScreen'});
-    }, 1000);
-
-    return () => clearTimeout(timer);
-  }, []);
+  }, [_hasHydrated]);
 
   return (
     <>
