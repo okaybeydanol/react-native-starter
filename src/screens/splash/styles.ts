@@ -23,6 +23,14 @@ const createStyles = (colors: AppTheme['colors']) =>
     logo: {
       width: 150,
       height: 150,
+      borderRadius: 75,
+      justifyContent: 'center',
+      alignItems: 'center',
+      backgroundColor: colors.background,
+    },
+    logoText: {
+      color: colors.text,
+      fontSize: 24,
     },
     textContainer: {
       marginTop: 50,
