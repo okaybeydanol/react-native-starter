@@ -1,13 +1,12 @@
 // React & React Native
 import React, {useEffect} from 'react';
-import {Image, Text, View} from 'react-native';
+import {Text, View} from 'react-native';
 
 // Third-Party Libraries
 import {useTheme} from '@react-navigation/native';
 import {useTranslation} from 'react-i18next';
 
 // Internal Imports (Absolute)
-import eterationLogo from '@assets/images/eteration-logo.png';
 import {setLanguage} from '@features/settings/screens/language/slices/languageSlice';
 import {getSystemLocale} from '@helpers/systemLocale';
 import {useAppDispatch, useAppSelector} from '@store/store';
@@ -48,11 +47,9 @@ const SplashScreen = ({navigation}: SplashScreenProps) => {
     <>
       <View style={styles.container}>
         <View style={styles.logoContainer}>
-          <Image
-            source={eterationLogo}
-            style={styles.logo}
-            resizeMode="contain"
-          />
+          <View style={styles.logo}>
+            <Text style={styles.logoText}>Logo</Text>
+          </View>
         </View>
         <View style={styles.textContainer}>
           <Text style={styles.title}>We Are Your Custom Software Experts</Text>
@@ -65,7 +62,7 @@ const SplashScreen = ({navigation}: SplashScreenProps) => {
       </View>
       <View style={styles.copyrightContainer}>
         <Text style={styles.copyrightText}>
-          © Copyright Brainstorming 2025. All rights reserved.
+          © Copyright Okay BEYDANOL 2025. All rights reserved.
         </Text>
       </View>
     </>
