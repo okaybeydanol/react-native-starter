@@ -15,7 +15,7 @@
     "fix:all": "yarn fix:lint $1 && yarn fix:imports $1",
     "precommit": "yarn check:all && yarn fix:all $1",
     "cache:cleaner": "node scripts/dev-workspace-cleaner.js $*",
-    "rename": "rm -rf ios android .git && npx react-native eject && yarn cache:clear && git init && git add . && git commit -m 'Initial commit'",
+    "rename": "rm -rf ios android .git && npx react-native eject && yarn cache:cleaner && git init && git add . && git commit -m 'Initial commit'",
     "wipe-example-data": "node scripts/project-structure-refiner.js && yarn rename"
   },
   "dependencies": {
