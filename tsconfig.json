@@ -37,6 +37,11 @@
     "jest.config.js",
     "metro.config.js",
     "coverage",
-    "tsconfig.json"
+    "tsconfig.json",
+    ".github",
+    ".husky",
+    ".vscode",
+    ".lintstagedrc.mjs",
+    "commitlint.config.mjs"
   ]
 }
