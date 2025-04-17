@@ -16,7 +16,8 @@
     "precommit": "yarn check:all && yarn fix:all $1",
     "cache:cleaner": "node scripts/dev-workspace-cleaner.js $*",
     "rename": "rm -rf ios android .git && npx react-native eject && yarn cache:cleaner && git init && git add . && git commit -m 'Initial commit'",
-    "wipe-example-data": "node scripts/project-structure-refiner.js && yarn rename"
+    "wipe-example-data": "node scripts/project-structure-refiner.js && yarn rename",
+    "prepare": "husky"
   },
   "dependencies": {
     "@react-native-async-storage/async-storage": "^2.1.2",
@@ -44,6 +45,8 @@
     "@babel/core": "^7.25.2",
     "@babel/preset-env": "^7.25.3",
     "@babel/runtime": "^7.25.0",
+    "@commitlint/cli": "^19.8.0",
+    "@commitlint/config-conventional": "^19.8.0",
     "@react-native-community/cli": "18.0.0",
     "@react-native-community/cli-platform-android": "18.0.0",
     "@react-native-community/cli-platform-ios": "18.0.0",
@@ -61,7 +64,9 @@
     "eslint-import-resolver-typescript": "^4.3.2",
     "eslint-plugin-import": "^2.31.0",
     "eslint-plugin-prettier": "4.2.1",
+    "husky": "^9.1.7",
     "jest": "^29.6.3",
+    "lint-staged": "^15.5.1",
     "prettier": "2.8.8",
     "react-native-dotenv": "^3.4.11",
     "react-test-renderer": "19.0.0",
