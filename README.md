@@ -90,9 +90,9 @@ src/
 
 ---
 
-# React Native Project Setup Guide
+## React Native Project Setup Guide
 
-## Getting Started
+### Getting Started
 
 Follow these steps to run the project on your local machine.
 
@@ -561,11 +561,11 @@ This operation includes:
 
 ---
 
-# React Native Project Scripts
+## React Native Project Scripts
 
 This documentation covers all the commands available in your React Native project. These scripts are designed to streamline and standardize your development workflow.
 
-## Basic Commands
+### Basic Commands
 
 - **`start`** Starts the React Native Metro bundler.
 
@@ -585,7 +585,7 @@ This documentation covers all the commands available in your React Native projec
   react-native run-ios
   ```
 
-## Testing and Quality Control
+### Testing and Quality Control
 
 - **`test`** Runs the Jest test runner with coverage report and detects open handles.
 
@@ -611,7 +611,7 @@ This documentation covers all the commands available in your React Native projec
   yarn check:lint && yarn check:types
   ```
 
-## Formatting
+### Formatting
 
 - **`fix:lint`** Automatically fixes ESLint issues.
 
@@ -676,7 +676,7 @@ This documentation covers all the commands available in your React Native projec
   yarn fix:all "src/components src/screens"
   ```
 
-## Git Workflow
+### Git Workflow
 
 - **`precommit`** Runs before commits to ensure code quality.
 
@@ -684,7 +684,7 @@ This documentation covers all the commands available in your React Native projec
   yarn check:all && yarn fix:all $1
   ```
 
-## Project Setup
+### Project Setup
 
 - **`rename`** Rebuilds local project files and cleans caches.
 
@@ -696,7 +696,7 @@ This documentation covers all the commands available in your React Native projec
 
 The project includes a curated selection of scripts designed to streamline common development workflows and ensure code quality and consistency. These scripts are integrated through the `package.json` configuration and can be executed via Yarn.
 
-## Development Scripts
+#### Development Scripts
 
 ```json
 {
@@ -747,7 +747,7 @@ The project includes a curated selection of scripts designed to streamline commo
 
 ---
 
-## Customization
+### Customization
 
 To further customize the template:
 
@@ -758,7 +758,7 @@ To further customize the template:
 
 ---
 
-## Feedback and Contributions
+### Feedback and Contributions
 
 We welcome your feedback and contributions! Feel free to open an issue or submit a pull request on [GitHub](https://github.com/okaybeydanol/react-native-starter).
 
