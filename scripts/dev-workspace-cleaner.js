@@ -166,13 +166,7 @@ function cleanIOS() {
 
   printSection('Cleaning iOS Build Files');
   runCommand(
-    'rm -rf ios/Pods ios/Podfile.lock ios/build \
-    ~/Library/Caches/CocoaPods \
-    ~/Library/Developer/Xcode/DerivedData \
-    ~/Library/Developer/CoreSimulator/Caches \
-    ~/Library/Developer/Xcode/Archives \
-    ~/Library/Developer/Xcode/Products \
-    ~/Library/Developer/Xcode/iOS\\ DeviceSupport',
+    'rm -rf ios/Pods ios/Podfile.lock ios/build ~/Library/Caches/CocoaPods ~/Library/Developer/Xcode/DerivedData ~/Library/Developer/CoreSimulator/Caches ~/Library/Developer/Xcode/Archives ~/Library/Developer/Xcode/Products ~/Library/Developer/Xcode/iOS\\ DeviceSupport',
   );
 
   runCommand('pod cache clean --all');
