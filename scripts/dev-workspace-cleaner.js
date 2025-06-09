@@ -195,7 +195,7 @@ function cleanAndroid() {
 
   // Remove build files
   runCommand(
-    'rm -rf android/.gradle android/.kotlin android/build android/app/build android/app/.cxx',
+    'rm -rf android/.gradle android/.kotlin android/build android/app/build android/app/.cxx android/.idea',
   );
 
   // Clean gradle caches
