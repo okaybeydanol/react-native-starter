@@ -2,14 +2,10 @@
 import type {BottomTabNavigationOptions} from '@react-navigation/bottom-tabs';
 import type {NativeStackNavigationOptions} from '@react-navigation/native-stack';
 
-// Sibling Directory Imports (Relative)
-import {STATUS_BAR_HEIGHT} from './dimensions';
-
 // Default navigator options
 export const defaultNavigatorOptions: NativeStackNavigationOptions = {
   headerShown: false,
   animation: 'slide_from_right',
-  contentStyle: {paddingTop: STATUS_BAR_HEIGHT},
 };
 
 // Tab navigator options
