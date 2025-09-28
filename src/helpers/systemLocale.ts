@@ -1,5 +1,5 @@
 // React & React Native
-import {NativeModules, Platform} from 'react-native';
+import { NativeModules, Platform } from 'react-native';
 
 export function getSystemLocale(): string {
   try {

@@ -1,6 +1,6 @@
 // Third-Party Libraries
 import i18n from 'i18next';
-import {initReactI18next} from 'react-i18next';
+import { initReactI18next } from 'react-i18next';
 
 // Sibling Directory Imports (Relative)
 import en from './locales/en/translations';

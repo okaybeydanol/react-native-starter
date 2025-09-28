@@ -1,19 +1,19 @@
 // React & React Native
-import React, {useCallback} from 'react';
-import {ActivityIndicator, StyleSheet, View} from 'react-native';
+import React, { useCallback } from 'react';
+import { ActivityIndicator, StyleSheet, View } from 'react-native';
 
 // Third-Party Libraries
-import {useTheme} from '@react-navigation/native';
+import { useTheme } from '@react-navigation/native';
 
 // Sibling Directory Imports (Relative)
-import type {ColorPath, LoadingIndicatorProps} from './types';
+import type { ColorPath, LoadingIndicatorProps } from './types';
 
 const LoadingIndicator = ({
   color,
   containerStyle,
   ...props
 }: LoadingIndicatorProps) => {
-  const {colors} = useTheme();
+  const { colors } = useTheme();
 
   const resolveColor = useCallback(
     (colorPath: ColorPath): string => {

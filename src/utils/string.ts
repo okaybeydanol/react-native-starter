@@ -1,9 +1,9 @@
 // Internal Imports (Absolute)
-import {defaultLocaleMap} from '@constants/localization';
-import {turkishCharsRegex} from '@constants/regex';
+import { defaultLocaleMap } from '@constants/localization';
+import { turkishCharsRegex } from '@constants/regex';
 
 // Sibling Directory Imports (Relative)
-import type {ConvertToLocaleProps} from './types';
+import type { ConvertToLocaleProps } from './types';
 
 export const convertToLocale = ({
   text,

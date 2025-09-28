@@ -1,9 +1,9 @@
 // Third-Party Libraries
-import type {AxiosRequestConfig} from 'axios';
+import type { AxiosRequestConfig } from 'axios';
 import axios from 'axios';
 
 // Internal Imports (Absolute)
-import {BASE_URL} from '@constants/urls';
+import { BASE_URL } from '@constants/urls';
 
 export const axiosInstance = axios.create({
   baseURL: BASE_URL,

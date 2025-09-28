@@ -1,15 +1,15 @@
 // React & React Native
-import React, {useCallback} from 'react';
+import React, { useCallback } from 'react';
 
 // Internal Imports (Absolute)
 import HomeUsersCard from '@components/tab/home/users-card/HomeUsersCard';
-import type {User} from '@query/api/types';
-import {useUsers} from '@query/queries/useUsers';
+import type { User } from '@query/api/types';
+import { useUsers } from '@query/queries/useUsers';
 
 const useHomeUsers = () => {
-  const {isLoading, isError, isFetching, data} = useUsers();
+  const { isLoading, isError, isFetching, data } = useUsers();
 
-  const renderItem = useCallback(({item}: {item: User}) => {
+  const renderItem = useCallback(({ item }: { item: User }) => {
     return <HomeUsersCard user={item} />;
   }, []);
 
@@ -18,7 +18,7 @@ const useHomeUsers = () => {
     [],
   );
 
-  return {isLoading, isError, isFetching, data, renderItem, keyExtractor};
+  return { isLoading, isError, isFetching, data, renderItem, keyExtractor };
 };
 
 export default useHomeUsers;

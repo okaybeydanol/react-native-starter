@@ -1,8 +1,8 @@
 // React & React Native
-import {Dimensions, StatusBar} from 'react-native';
+import { Dimensions, StatusBar } from 'react-native';
 
-const {width: wWidth, height: wHeight} = Dimensions.get('window');
-const {width: sWidth, height: sHeight} = Dimensions.get('screen');
+const { width: wWidth, height: wHeight } = Dimensions.get('window');
+const { width: sWidth, height: sHeight } = Dimensions.get('screen');
 
 export const WINDOW_WIDTH = wWidth;
 export const WINDOW_HEIGHT = wHeight;

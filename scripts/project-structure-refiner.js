@@ -390,7 +390,7 @@ const createTabComponent = componentConfig => {
   const dirPath = path.dirname(fullPath);
 
   if (!fs.existsSync(dirPath)) {
-    fs.mkdirSync(dirPath, {recursive: true});
+    fs.mkdirSync(dirPath, { recursive: true });
   }
 
   fs.writeFileSync(fullPath, componentConfig.content, 'utf8');

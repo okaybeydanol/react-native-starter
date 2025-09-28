@@ -1,5 +1,5 @@
 {
-  "extends": "@react-native/typescript-config/tsconfig.json",
+  "extends": "@react-native/typescript-config",
   "compilerOptions": {
     "baseUrl": "./src",
     "paths": {
@@ -31,7 +31,8 @@
     ".bundle",
     "android",
     "ios",
-    "node_modules",
+    "**/node_modules",
+    "**/Pods",
     "vendor",
     "babel.config.js",
     "jest.config.js",

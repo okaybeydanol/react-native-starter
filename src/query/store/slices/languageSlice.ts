@@ -1,10 +1,12 @@
 // Third-Party Libraries
-import AsyncStorage from '@react-native-async-storage/async-storage';
-import {create} from 'zustand';
-import {persist, createJSONStorage} from 'zustand/middleware';
+import { create } from 'zustand';
+import { persist, createJSONStorage } from 'zustand/middleware';
+
+// Internal Imports (Absolute)
+import { zustandPersistStorage } from '@utils/MMKVStorage';
 
 // Parent Directory Imports (Relative)
-import type {LanguageState} from '../types';
+import type { LanguageState } from '../types';
 
 export const useLanguageStore = create<LanguageState>()(
   persist(
@@ -12,13 +14,13 @@ export const useLanguageStore = create<LanguageState>()(
       language: '',
       _hasHydrated: false,
       setLanguage: (language: string) => {
-        set({language});
+        set({ language });
       },
-      setHydrated: (hydrated: boolean) => set({_hasHydrated: hydrated}),
+      setHydrated: (hydrated: boolean) => set({ _hasHydrated: hydrated }),
     }),
     {
       name: 'language-storage',
-      storage: createJSONStorage(() => AsyncStorage),
+      storage: createJSONStorage(() => zustandPersistStorage),
       onRehydrateStorage: () => state => {
         state?.setHydrated(true);
       },
