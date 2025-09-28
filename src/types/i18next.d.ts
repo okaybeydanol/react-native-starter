@@ -2,7 +2,7 @@
 import 'i18next';
 
 // Internal Imports (Absolute)
-import {resources} from '@i18n/i18n';
+import { resources } from '@i18n/i18n';
 
 const locale = resources.en;
 

@@ -1,9 +1,9 @@
 // Third-Party Libraries
-import type {PayloadAction} from '@reduxjs/toolkit';
-import {createSlice} from '@reduxjs/toolkit';
+import type { PayloadAction } from '@reduxjs/toolkit';
+import { createSlice } from '@reduxjs/toolkit';
 
 // Parent Directory Imports (Relative)
-import type {ThemeState} from '../types';
+import type { ThemeState } from '../types';
 
 const initialState: ThemeState = {
   mode: 'system',
@@ -19,5 +19,5 @@ export const themeSlice = createSlice({
   },
 });
 
-export const {setTheme} = themeSlice.actions;
+export const { setTheme } = themeSlice.actions;
 export default themeSlice.reducer;

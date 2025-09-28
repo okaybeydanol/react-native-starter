@@ -1,5 +1,5 @@
 // Third-Party Libraries
-import type {Theme} from '@react-navigation/native';
+import type { Theme } from '@react-navigation/native';
 
 export interface AppTheme extends Theme {
   colors: Theme['colors'] & {

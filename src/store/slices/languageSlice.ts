@@ -1,9 +1,9 @@
 // Third-Party Libraries
-import type {PayloadAction} from '@reduxjs/toolkit';
-import {createSlice} from '@reduxjs/toolkit';
+import type { PayloadAction } from '@reduxjs/toolkit';
+import { createSlice } from '@reduxjs/toolkit';
 
 // Parent Directory Imports (Relative)
-import type {LanguageState} from '../types';
+import type { LanguageState } from '../types';
 
 const initialState: LanguageState = {
   language: '',
@@ -19,5 +19,5 @@ export const languageSlice = createSlice({
   },
 });
 
-export const {setLanguage} = languageSlice.actions;
+export const { setLanguage } = languageSlice.actions;
 export default languageSlice.reducer;

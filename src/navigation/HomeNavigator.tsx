@@ -2,7 +2,7 @@
 import React from 'react';
 
 // Third-Party Libraries
-import {createNativeStackNavigator} from '@react-navigation/native-stack';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
 // Internal Imports (Absolute)
 import {
@@ -15,14 +15,15 @@ import SettingsScreen from '@screens/settings/SettingsScreen';
 import ThemeScreen from '@screens/settings/theme/ThemeScreen';
 
 // Sibling Directory Imports (Relative)
-import type {HomeStack} from './types';
+import type { HomeStack } from './types';
 
 const Home = createNativeStackNavigator<HomeStack>();
 const HomeNavigator = () => {
   return (
     <Home.Navigator
       initialRouteName="SettingsScreen"
-      screenOptions={defaultNavigatorOptions}>
+      screenOptions={defaultNavigatorOptions}
+    >
       <Home.Screen name="SettingsScreen" component={SettingsScreen} />
       <Home.Screen
         options={defaultModalOptions}

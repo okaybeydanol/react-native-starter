@@ -1,18 +1,18 @@
 // React & React Native
 import React from 'react';
-import {StyleSheet, TouchableOpacity, View} from 'react-native';
+import { StyleSheet, TouchableOpacity, View } from 'react-native';
 
 // Third-Party Libraries
-import {useTheme} from '@react-navigation/native';
+import { useTheme } from '@react-navigation/native';
 
 // Internal Imports (Absolute)
-import type {AppTheme} from '@theme/types';
+import type { AppTheme } from '@theme/types';
 
 // Sibling Directory Imports (Relative)
-import type {RadioButtonProps} from './types';
+import type { RadioButtonProps } from './types';
 
-const RadioButton = ({onPress, isActive}: RadioButtonProps) => {
-  const {colors} = useTheme();
+const RadioButton = ({ onPress, isActive }: RadioButtonProps) => {
+  const { colors } = useTheme();
   const styles = React.useMemo(() => createStyles(colors), [colors]);
   const radioButtonStyle = React.useMemo(
     () => ({
@@ -25,7 +25,8 @@ const RadioButton = ({onPress, isActive}: RadioButtonProps) => {
     <TouchableOpacity
       activeOpacity={0.8}
       onPress={onPress}
-      style={styles.container}>
+      style={styles.container}
+    >
       <View style={[styles.radioButton, radioButtonStyle]} />
     </TouchableOpacity>
   );

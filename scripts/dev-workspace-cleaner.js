@@ -1,5 +1,5 @@
 // Node.js Core Modules
-const {execSync} = require('child_process');
+const { execSync } = require('child_process');
 const fs = require('fs');
 const os = require('os');
 
@@ -51,7 +51,7 @@ function runCommand(command) {
   console.log(`${colors.yellow}Running:${colors.reset} ${command}`);
 
   try {
-    execSync(command, {stdio: 'inherit'});
+    execSync(command, { stdio: 'inherit' });
     console.log(`${colors.green}✓ Success${colors.reset}`);
     return true;
   } catch (error) {

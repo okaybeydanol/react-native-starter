@@ -1,8 +1,8 @@
 // Third-Party Libraries
-import {DarkTheme} from '@react-navigation/native';
+import { DarkTheme } from '@react-navigation/native';
 
 // Sibling Directory Imports (Relative)
-import type {AppTheme} from './types';
+import type { AppTheme } from './types';
 
 export const darkTheme: AppTheme = {
   ...DarkTheme,

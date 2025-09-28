@@ -1,19 +1,23 @@
 // React & React Native
 import React from 'react';
-import {View, Text, TouchableOpacity, StyleSheet} from 'react-native';
+import { View, Text, TouchableOpacity, StyleSheet } from 'react-native';
 
 // Third-Party Libraries
-import {useTheme} from '@react-navigation/native';
+import { useTheme } from '@react-navigation/native';
 
 // Internal Imports (Absolute)
 import RadioButton from '@components/ui/RadioButton';
-import type {AppTheme} from '@theme/types';
+import type { AppTheme } from '@theme/types';
 
 // Sibling Directory Imports (Relative)
-import type {SingleSelectionProps} from './types';
+import type { SingleSelectionProps } from './types';
 
-const SingleSelection = ({onPress, title, isActive}: SingleSelectionProps) => {
-  const {colors} = useTheme();
+const SingleSelection = ({
+  onPress,
+  title,
+  isActive,
+}: SingleSelectionProps) => {
+  const { colors } = useTheme();
   const styles = React.useMemo(() => createStyles(colors), [colors]);
 
   return (
