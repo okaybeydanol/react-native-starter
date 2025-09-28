@@ -1,31 +1,31 @@
 // React & React Native
 import React from 'react';
-import {View} from 'react-native';
+import { View } from 'react-native';
 
 // Third-Party Libraries
-import {useTheme} from '@react-navigation/native';
-import {useTranslation} from 'react-i18next';
+import { useTheme } from '@react-navigation/native';
+import { useTranslation } from 'react-i18next';
 
 // Internal Imports (Absolute)
-import {setTheme} from '@features/settings/screens/theme/slices/themeSlice';
-import {useAppDispatch, useAppSelector} from '@store/store';
+import { setTheme } from '@features/settings/screens/theme/slices/themeSlice';
+import { useAppDispatch, useAppSelector } from '@store/store';
 
 // Parent Directory Imports (Relative)
 import SingleSelection from '../../SingleSelection';
 
 // Sibling Directory Imports (Relative)
 import createStyles from './styles';
-import type {SettingsThemeContent} from './types';
+import type { SettingsThemeContent } from './types';
 
-const ThemeContent = ({navigation}: SettingsThemeContent) => {
-  const {colors} = useTheme();
+const ThemeContent = ({ navigation }: SettingsThemeContent) => {
+  const { colors } = useTheme();
   const styles = React.useMemo(() => createStyles(colors), [colors]);
-  const {t} = useTranslation('home');
+  const { t } = useTranslation('home');
   const mode = useAppSelector(state => state.theme.mode);
   const dispatch = useAppDispatch();
 
   const handleTheme = (themeMode: 'dark' | 'light' | 'system') => {
-    dispatch(setTheme({mode: themeMode}));
+    dispatch(setTheme({ mode: themeMode }));
     navigation.goBack();
   };
 

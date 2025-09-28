@@ -2,8 +2,8 @@
 import * as React from 'react';
 
 // Third-Party Libraries
-import type {SvgProps} from 'react-native-svg';
-import Svg, {Path} from 'react-native-svg';
+import type { SvgProps } from 'react-native-svg';
+import Svg, { Path } from 'react-native-svg';
 
 const TabHomeSvg = (props: SvgProps) => {
   return (

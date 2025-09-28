@@ -1,17 +1,17 @@
 // React & React Native
 import React from 'react';
-import {StyleSheet, Text, TouchableOpacity, View} from 'react-native';
+import { StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 
 // Third-Party Libraries
-import {useNavigation, useTheme} from '@react-navigation/native';
+import { useNavigation, useTheme } from '@react-navigation/native';
 
 // Internal Imports (Absolute)
-import {getGlobalSvg} from '@helpers/globalSvg';
-import type {RootStackScreenProps} from '@navigation/types';
-import type {AppTheme} from '@theme/types';
+import { getGlobalSvg } from '@helpers/globalSvg';
+import type { RootStackScreenProps } from '@navigation/types';
+import type { AppTheme } from '@theme/types';
 
 // Sibling Directory Imports (Relative)
-import type {ButtonConfig, GlobalHeaderProps} from './types';
+import type { ButtonConfig, GlobalHeaderProps } from './types';
 
 const GlobalHeader = ({
   title = '',
@@ -22,7 +22,7 @@ const GlobalHeader = ({
   rightButtonConfig,
   leftButtonConfig,
 }: GlobalHeaderProps) => {
-  const {colors} = useTheme();
+  const { colors } = useTheme();
   const styles = React.useMemo(() => createStyles(colors), [colors]);
   const navigation =
     useNavigation<RootStackScreenProps<'MainNavigator'>['navigation']>();
@@ -42,13 +42,14 @@ const GlobalHeader = ({
   const hasRightConfig = !!rightButtonConfig;
 
   const renderButton = (config: ButtonConfig) => {
-    const {icon, iconProps, iconStyle, onPress, style} = config;
+    const { icon, iconProps, iconStyle, onPress, style } = config;
 
     return (
       <TouchableOpacity
         activeOpacity={0.7}
         style={[styles.headerButton, style]}
-        onPress={onPress}>
+        onPress={onPress}
+      >
         {getGlobalSvg({
           code: icon,
           props: iconProps,
@@ -61,7 +62,7 @@ const GlobalHeader = ({
   const rightContent = React.useMemo(
     () => (
       <View style={styles.rightContainer}>
-        {showRightButton && hasRightConfig && renderButton(rightButtonConfig!)}
+        {showRightButton && hasRightConfig && renderButton(rightButtonConfig)}
       </View>
     ),
     [showRightButton, rightButtonConfig],

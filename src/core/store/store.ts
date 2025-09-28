@@ -1,7 +1,6 @@
 // Third-Party Libraries
-import AsyncStorage from '@react-native-async-storage/async-storage';
-import {configureStore} from '@reduxjs/toolkit';
-import {useDispatch, useSelector} from 'react-redux';
+import { configureStore } from '@reduxjs/toolkit';
+import { useDispatch, useSelector } from 'react-redux';
 import {
   FLUSH,
   PAUSE,
@@ -13,12 +12,15 @@ import {
   REHYDRATE,
 } from 'redux-persist';
 
+// Internal Imports (Absolute)
+import { reduxPersistStorage } from '@utils/MMKVStorage';
+
 // Sibling Directory Imports (Relative)
-import {apiMiddleware, rootReducer} from './rootReducer';
+import { apiMiddleware, rootReducer } from './rootReducer';
 
 const rootPersistConfig = {
   key: 'root',
-  storage: AsyncStorage,
+  storage: reduxPersistStorage,
   whitelist: ['theme', 'language'],
 };
 

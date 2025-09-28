@@ -1,24 +1,24 @@
 // React & React Native
-import React, {useEffect} from 'react';
-import {Text, View} from 'react-native';
+import React, { useEffect } from 'react';
+import { Text, View } from 'react-native';
 
 // Third-Party Libraries
-import {useTheme} from '@react-navigation/native';
-import {useTranslation} from 'react-i18next';
+import { useTheme } from '@react-navigation/native';
+import { useTranslation } from 'react-i18next';
 
 // Internal Imports (Absolute)
-import {setLanguage} from '@features/settings/screens/language/slices/languageSlice';
-import {getSystemLocale} from '@helpers/systemLocale';
-import {useAppDispatch, useAppSelector} from '@store/store';
+import { setLanguage } from '@features/settings/screens/language/slices/languageSlice';
+import { getSystemLocale } from '@helpers/systemLocale';
+import { useAppDispatch, useAppSelector } from '@store/store';
 
 // Sibling Directory Imports (Relative)
 import createStyles from './styles';
-import type {SplashScreenProps} from './types';
+import type { SplashScreenProps } from './types';
 
-const SplashScreen = ({navigation}: SplashScreenProps) => {
-  const {colors} = useTheme();
+const SplashScreen = ({ navigation }: SplashScreenProps) => {
+  const { colors } = useTheme();
   const styles = React.useMemo(() => createStyles(colors), [colors]);
-  const {i18n} = useTranslation();
+  const { i18n } = useTranslation();
   const language = useAppSelector(state => state.language.language);
   const dispatch = useAppDispatch();
 
@@ -37,7 +37,7 @@ const SplashScreen = ({navigation}: SplashScreenProps) => {
     }
 
     const timer = setTimeout(() => {
-      navigation.replace('TabNavigator', {screen: 'HomeScreen'});
+      navigation.replace('TabNavigator', { screen: 'HomeScreen' });
     }, 1000);
 
     return () => clearTimeout(timer);
@@ -62,7 +62,7 @@ const SplashScreen = ({navigation}: SplashScreenProps) => {
       </View>
       <View style={styles.copyrightContainer}>
         <Text style={styles.copyrightText}>
-          © Copyright Okay BEYDANOL 2025. All rights reserved.
+          © Copyright Brainstorming 2025. All rights reserved.
         </Text>
       </View>
     </>

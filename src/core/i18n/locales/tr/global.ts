@@ -12,4 +12,5 @@ export default {
     dark: 'Karanlık',
     light: 'Aydınlık',
   },
+  errorBoundary: 'Bir şeyler yanlış gitti',
 };

@@ -1,7 +1,3 @@
-jest.mock('@react-native-async-storage/async-storage', () =>
-  require('@react-native-async-storage/async-storage/jest/async-storage-mock'),
-);
-
 jest.mock('redux-persist', () => {
   const actualReduxPersist = jest.requireActual('redux-persist');
   return {
@@ -9,7 +5,7 @@ jest.mock('redux-persist', () => {
     persistReducer: jest.fn((_, reducer) => reducer),
     persistStore: jest.fn().mockImplementation(() => ({
       subscribe: jest.fn(),
-      getState: jest.fn().mockReturnValue({bootstrapped: true}),
+      getState: jest.fn().mockReturnValue({ bootstrapped: true }),
       purge: jest.fn().mockResolvedValue(null),
       flush: jest.fn().mockResolvedValue(null),
       pause: jest.fn(),

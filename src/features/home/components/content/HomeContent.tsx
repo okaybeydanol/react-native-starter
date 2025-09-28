@@ -1,9 +1,9 @@
 // React & React Native
 import React from 'react';
-import {FlatList, View} from 'react-native';
+import { FlatList, View } from 'react-native';
 
 // Third-Party Libraries
-import {useTheme} from '@react-navigation/native';
+import { useTheme } from '@react-navigation/native';
 
 // Internal Imports (Absolute)
 import GenericView from '@components/ui/GenericView';
@@ -12,12 +12,12 @@ import useHomeUsers from '@features/home/hooks/useHomeUsers';
 
 // Sibling Directory Imports (Relative)
 import createStyles from './styles';
-import type {HomeContentProps} from './types';
+import type { HomeContentProps } from './types';
 
 const HomeContent = ({}: HomeContentProps) => {
-  const {colors} = useTheme();
+  const { colors } = useTheme();
   const styles = React.useMemo(() => createStyles(colors), [colors]);
-  const {isLoading, isError, isFetching, data, renderItem, keyExtractor} =
+  const { isLoading, isError, isFetching, data, renderItem, keyExtractor } =
     useHomeUsers();
 
   const renderContent = () => {

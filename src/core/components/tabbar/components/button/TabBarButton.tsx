@@ -1,21 +1,21 @@
 // React & React Native
 import React from 'react';
-import {TouchableOpacity} from 'react-native';
+import { TouchableOpacity } from 'react-native';
 
 // Third-Party Libraries
-import {useTheme} from '@react-navigation/native';
+import { useTheme } from '@react-navigation/native';
 
 // Internal Imports (Absolute)
-import {getTabSvg} from '@components/tabbar/helpers/tabBarSvg';
+import { getTabSvg } from '@components/tabbar/helpers/tabBarSvg';
 
 // Parent Directory Imports (Relative)
-import type {StateRoutesMapParams} from '../types';
+import type { StateRoutesMapParams } from '../types';
 
 // Sibling Directory Imports (Relative)
 import createStyles from './styles';
 
-const TabBarButton = ({state, navigation, index}: StateRoutesMapParams) => {
-  const {colors} = useTheme();
+const TabBarButton = ({ state, navigation, index }: StateRoutesMapParams) => {
+  const { colors } = useTheme();
   const styles = React.useMemo(() => createStyles(colors), [colors]);
 
   const route = state.routes[index];
@@ -37,7 +37,8 @@ const TabBarButton = ({state, navigation, index}: StateRoutesMapParams) => {
     <TouchableOpacity
       key={route.name}
       onPress={onPress}
-      style={styles.container}>
+      style={styles.container}
+    >
       {getTabSvg({
         code: route.name,
         props: {

@@ -1,17 +1,17 @@
 // React & React Native
 import React from 'react';
-import {View} from 'react-native';
+import { View } from 'react-native';
 
 // Third-Party Libraries
-import type {BottomTabBarProps} from '@react-navigation/bottom-tabs';
-import {useTheme} from '@react-navigation/native';
+import type { BottomTabBarProps } from '@react-navigation/bottom-tabs';
+import { useTheme } from '@react-navigation/native';
 
 // Sibling Directory Imports (Relative)
 import TabBarButton from './button/TabBarButton';
 import createStyles from './styles';
 
 const TabBar = (props: BottomTabBarProps) => {
-  const {colors} = useTheme();
+  const { colors } = useTheme();
   const styles = React.useMemo(() => createStyles(colors), [colors]);
 
   const routes = (_: any, index: number) => {

@@ -1,14 +1,18 @@
 // React & React Native
-import type {ActivityIndicatorProps, StyleProp, ViewStyle} from 'react-native';
+import type {
+  ActivityIndicatorProps,
+  StyleProp,
+  ViewStyle,
+} from 'react-native';
 
 // Third-Party Libraries
-import type {FlatNamespace} from 'i18next';
-import type {SvgProps} from 'react-native-svg';
+import type { FlatNamespace } from 'i18next';
+import type { SvgProps } from 'react-native-svg';
 
 // Internal Imports (Absolute)
-import type {resources} from '@i18n/i18n';
-import type {AppTheme} from '@theme/types';
-import type {NestedKeysDotNotationPaths} from '@utils/object';
+import type { resources } from '@i18n/i18n';
+import type { AppTheme } from '@theme/types';
+import type { NestedKeysDotNotationPaths } from '@utils/object';
 
 export type TKeys<K extends FlatNamespace> = NestedKeysDotNotationPaths<
   (typeof resources.tr)[K]

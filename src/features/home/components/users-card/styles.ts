@@ -1,9 +1,9 @@
 // React & React Native
-import {StyleSheet} from 'react-native';
+import { StyleSheet } from 'react-native';
 
 // Internal Imports (Absolute)
-import {WINDOW_WIDTH} from '@constants/dimensions';
-import type {AppTheme} from '@theme/types';
+import { WINDOW_WIDTH } from '@constants/dimensions';
+import type { AppTheme } from '@theme/types';
 
 const createStyles = (colors: AppTheme['colors']) =>
   StyleSheet.create({

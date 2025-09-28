@@ -12,4 +12,5 @@ export default {
     dark: 'Dark',
     light: 'Light',
   },
+  errorBoundary: 'Something went wrong',
 };

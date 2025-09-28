@@ -4,10 +4,10 @@ import type {
   FetchArgs,
   FetchBaseQueryError,
 } from '@reduxjs/toolkit/query/react';
-import {fetchBaseQuery} from '@reduxjs/toolkit/query/react';
+import { fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 
 // Internal Imports (Absolute)
-import {BASE_URL} from '@constants/urls';
+import { BASE_URL } from '@constants/urls';
 
 export const baseQueryAcceptJson = fetchBaseQuery({
   baseUrl: BASE_URL,
@@ -23,7 +23,7 @@ export const baseQueryAcceptJson = fetchBaseQuery({
 
 const baseQueryToken = fetchBaseQuery({
   baseUrl: BASE_URL,
-  prepareHeaders: (headers, {getState}) => {
+  prepareHeaders: (headers, { getState }) => {
     // Replace 'any' with your actual RootState type
     // Import RootState from your store:
     // import { RootState } from '../store';
@@ -62,7 +62,9 @@ export const baseQueryWithRefreshToken: BaseQueryFn<
       },
       api,
       extraOptions,
-    )) as {data: {access_token: string; token_type: string /* other fields */}};
+    )) as {
+      data: { access_token: string; token_type: string /* other fields */ };
+    };
 
     if (refreshResult.data) {
       // 3. Update the access token in the store

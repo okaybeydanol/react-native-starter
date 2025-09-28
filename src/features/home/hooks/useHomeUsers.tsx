@@ -1,16 +1,16 @@
 // React & React Native
-import {useCallback} from 'react';
+import { useCallback } from 'react';
 
 // Parent Directory Imports (Relative)
-import {useGetAllUsersQuery} from '../api/homeApi';
-import type {User} from '../api/types';
+import { useGetAllUsersQuery } from '../api/homeApi';
+import type { User } from '../api/types';
 import HomeUsersCard from '../components/users-card/HomeUsersCard';
 
 const useHomeUsers = () => {
-  const {isLoading, isError, isFetching, data} = useGetAllUsersQuery();
+  const { isLoading, isError, isFetching, data } = useGetAllUsersQuery();
 
   const renderItem = useCallback(
-    ({item}: {item: User}) => <HomeUsersCard user={item} />,
+    ({ item }: { item: User }) => <HomeUsersCard user={item} />,
     [],
   );
 
@@ -19,7 +19,7 @@ const useHomeUsers = () => {
     [],
   );
 
-  return {isLoading, isError, isFetching, data, renderItem, keyExtractor};
+  return { isLoading, isError, isFetching, data, renderItem, keyExtractor };
 };
 
 export default useHomeUsers;

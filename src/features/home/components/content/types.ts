@@ -1,9 +1,9 @@
 // Third-Party Libraries
-import type {FlatNamespace} from 'i18next';
+import type { FlatNamespace } from 'i18next';
 
 // Internal Imports (Absolute)
-import type {TKeys} from '@components/ui/types';
-import type {TabStackScreenProps} from '@navigation/types';
+import type { TKeys } from '@components/ui/types';
+import type { TabStackScreenProps } from '@navigation/types';
 
 export interface HomeHeaderParams extends TabStackScreenProps<'HomeScreen'> {}
 export interface HomeHeaderButtonProps<K extends FlatNamespace> {

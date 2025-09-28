@@ -42,7 +42,7 @@ const importGroupConfig = [
     key: 'external',
     title: '// Third-Party Libraries',
     pattern:
-      /^(?!react$|react-native$|@(app|assets|components|constants|hooks|i18n|navigation|store|query|screens|theme|types|utils|features|helpers))([a-z][\w-]+)$/,
+      /^(?!react$|react-native$|@(app|assets|components|constants|hooks|i18n|navigation|store|query|screens|theme|types|utils|features|helpers))([a-z][\w-]+)$/, // NOSONAR
   },
   {
     key: 'internal',
@@ -60,7 +60,7 @@ const importGroupConfig = [
     title: '// Sibling Directory Imports (Relative)',
     pattern: /^\.\/(?!index)/,
   },
-  {key: 'index', title: '// Index Imports', pattern: /^(\.\/)?index/},
+  { key: 'index', title: '// Index Imports', pattern: /^(\.\/)?index/ },
 ];
 
 // Statistics object for better reporting
@@ -169,7 +169,8 @@ const shouldProcessFile = filePath => {
  * @param {string} filePath - Path to the file
  * @returns {boolean} - Whether the file was modified
  */
-const sortImports = filePath => {
+
+const sortImports = (filePath) /* NOSONAR  */ => {
   try {
     const content = fs.readFileSync(filePath, 'utf-8');
     const cleanedContent = cleanPreviousHeaders(content);
@@ -208,7 +209,7 @@ const sortImports = filePath => {
         }
 
         importLines.push(fullImport);
-        i = j - 1;
+        i = j - 1; // NOSONAR
       } else {
         codeLines.push(lines[i]);
       }

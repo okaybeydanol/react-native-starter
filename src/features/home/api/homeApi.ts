@@ -1,11 +1,11 @@
 // Third-Party Libraries
-import {createApi} from '@reduxjs/toolkit/query/react';
+import { createApi } from '@reduxjs/toolkit/query/react';
 
 // Internal Imports (Absolute)
-import {baseQueryAcceptJson} from '@store/api/middleware';
+import { baseQueryAcceptJson } from '@store/api/middleware';
 
 // Sibling Directory Imports (Relative)
-import type {UsersResponse} from './types';
+import type { UsersResponse } from './types';
 
 export const homeApi = createApi({
   reducerPath: 'homeApi',
@@ -20,4 +20,4 @@ export const homeApi = createApi({
   }),
 });
 
-export const {useGetAllUsersQuery} = homeApi;
+export const { useGetAllUsersQuery } = homeApi;

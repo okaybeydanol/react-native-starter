@@ -1,8 +1,8 @@
 // React & React Native
-import type {StyleProp, ViewStyle} from 'react-native';
+import type { StyleProp, ViewStyle } from 'react-native';
 
 // Third-Party Libraries
-import type {SvgProps} from 'react-native-svg';
+import type { SvgProps } from 'react-native-svg';
 
 export interface SvgHelperProps {
   code: string;
