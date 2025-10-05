@@ -49,8 +49,8 @@ const filesToModify = [
   },
   {
     path: 'src/helpers/getSvg.tsx',
-    pattern: /export {getTabSvg, getGlobalSvg};/,
-    replacement: 'export {getTabSvg};',
+    pattern: /export { getTabSvg, getGlobalSvg };/,
+    replacement: 'export { getTabSvg };',
   },
   {
     path: 'src/navigation/MainNavigator.tsx',
@@ -91,17 +91,17 @@ export default {
 const basicComponentTemplate = (componentName, screenName) => {
   return `// React & React Native
 import React from 'react';
-import {Text, View} from 'react-native';
+import { Text, View } from 'react-native';
 
 // Third-Party Libraries
-import {useTheme} from '@react-navigation/native';
+import { useTheme } from '@react-navigation/native';
 
 // Sibling Directory Imports (Relative)
 import createStyles from './styles';
-import type {${componentName}Props} from './types';
+import type { ${componentName}Props } from './types';
 
 const ${componentName} = ({}: ${componentName}Props) => {
-  const {colors} = useTheme();
+  const { colors } = useTheme();
   const styles = React.useMemo(() => createStyles(colors), [colors]);
 
   return (
@@ -116,10 +116,10 @@ export default ${componentName};\n`;
 
 const basicStylesTemplate = text => {
   return `// React & React Native
-import {StyleSheet} from 'react-native';
+import { StyleSheet } from 'react-native';
 
 // Internal Imports (Absolute)
-import type {AppTheme} from '@theme/types';
+import type { AppTheme } from '@theme/types';
 
 const createStyles = (colors: AppTheme['colors']) =>
   StyleSheet.create({
@@ -146,7 +146,7 @@ export default createStyles;
 
 const basicTypesTemplate = (componentName, screenName, stack) => {
   let template = `// Internal Imports (Absolute)
-import type {${stack}ScreenProps} from '@navigation/types';\n\n`;
+import type { ${stack}ScreenProps } from '@navigation/types';\n\n`;
 
   if (componentName.includes('Profile') || componentName.includes('Splash')) {
     template += `export interface ${componentName}Props
@@ -162,20 +162,20 @@ import type {${stack}ScreenProps} from '@navigation/types';\n\n`;
 const basicScreenTemplate = (folder, componentName, screenName) => {
   return `// React & React Native
 import React from 'react';
-import {SafeAreaView} from 'react-native';
 
 // Third-Party Libraries
-import {useTheme} from '@react-navigation/native';
+import { useTheme } from '@react-navigation/native';
+import { SafeAreaView } from 'react-native-safe-area-context';
 
 // Internal Imports (Absolute)
 import ${componentName} from '@components/tab/${folder}/content/${componentName}';
 
 // Sibling Directory Imports (Relative)
 import createStyles from './styles';
-import type {${screenName}Props} from './types';
+import type { ${screenName}Props } from './types';
 
-const ${screenName} = ({navigation, route}: ${screenName}Props) => {
-  const {colors} = useTheme();
+const ${screenName} = ({ navigation, route }: ${screenName}Props) => {
+  const { colors } = useTheme();
   const styles = React.useMemo(() => createStyles(colors), [colors]);
 
   return (
@@ -189,25 +189,25 @@ export default ${screenName};\n`;
 };
 
 const splashScreenTemplate = `// React & React Native
-import React, {useEffect} from 'react';
-import {Text, View} from 'react-native';
+import React, { useEffect } from 'react';
+import { Text, View } from 'react-native';
 
 // Third-Party Libraries
-import {useTheme} from '@react-navigation/native';
-import {useTranslation} from 'react-i18next';
+import { useTheme } from '@react-navigation/native';
+import { useTranslation } from 'react-i18next';
 
 // Sibling Directory Imports (Relative)
 import createStyles from './styles';
-import type {SplashScreenProps} from './types';
+import type { SplashScreenProps } from './types';
 
-const SplashScreen = ({navigation}: SplashScreenProps) => {
-  const {colors} = useTheme();
+const SplashScreen = ({ navigation }: SplashScreenProps) => {
+  const { colors } = useTheme();
   const styles = React.useMemo(() => createStyles(colors), [colors]);
-  const {t} = useTranslation('global');
+  const { t } = useTranslation('global');
 
   useEffect(() => {
     const timer = setTimeout(() => {
-      navigation.replace('TabNavigator', {screen: 'HomeScreen'});
+      navigation.replace('TabNavigator', { screen: 'HomeScreen' });
     }, 1000);
 
     return () => clearTimeout(timer);
@@ -228,6 +228,7 @@ const tabComponentsToCreate = [
     path: 'src/i18n/locales/en/global.ts',
     content: `export default {
   welcome: 'Welcome to the starter template',
+  errorBoundary: 'Something went wrong',
 };
 `,
   },
@@ -235,6 +236,7 @@ const tabComponentsToCreate = [
     path: 'src/i18n/locales/tr/global.ts',
     content: `export default {
   welcome: 'Başlangıç şablonuna hoş geldiniz',
+  errorBoundary: 'Bir şeyler yanlış gitti',
 };
 `,
   },
