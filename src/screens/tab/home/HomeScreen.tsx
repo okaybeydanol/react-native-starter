@@ -1,10 +1,10 @@
 // React & React Native
 import React from 'react';
-import { SafeAreaView } from 'react-native';
 
 // Third-Party Libraries
 import { useTheme } from '@react-navigation/native';
 import { useTranslation } from 'react-i18next';
+import { SafeAreaView } from 'react-native-safe-area-context';
 
 // Internal Imports (Absolute)
 import HomeContent from '@components/tab/home/content/HomeContent';
